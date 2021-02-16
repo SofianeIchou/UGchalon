@@ -1,0 +1,68 @@
+.navbar-default{
+    background-color: #E0B43F;
+}
+
+.navbar-default .navbar-nav  a  {
+    color: #75716B;
+   }
+
+.container{
+padding: auto;
+
+}
+
+
+
+
+.col-lg-5{
+    padding: 6rem;
+}
+
+
+p{
+    text-align: justify;
+    color: #75716B;
+}
+
+
+h1{
+    color: #E0B43F;
+}
+
+
+.right{
+    text-align: right;
+}
+
+
+.col-lg-2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.carousel-item{
+    height: 450px;
+}
+
+.carousel-caption{
+    text-align: center;
+}
+
+p.slide-p{
+    text-align: center;
+    color: white;
+}
+
+.bg-default{
+    background-color: #E0B43F;
+}
+
+.footer_img{
+    height: 75px;
+}
+
+.list-unstyled p{
+    text-align: center;
+}
