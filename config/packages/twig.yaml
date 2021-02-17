@@ -1,3 +1,7 @@
 twig:
+    globals:
+        site_name: 'UG Chalon'
+        google_recaptcha_site_key: '%env(GOOGLE_RECAPTCHA_SITE_KEY)%'
     default_path: '%kernel.project_dir%/templates'
     form_themes: ['bootstrap_4_layout.html.twig']
+

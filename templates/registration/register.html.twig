@@ -16,9 +16,37 @@
         <div class="row">
             <div class="col-12 col-md-4 offset-md-4">
 
-                    {{form(registrationForm)}}
+                {# Ouverture du formulaire #}
+                {{ form_start(registrationForm) }}
+
+                {# Affichage des erreurs générales du formulaire #}
+                {{ form_errors(registrationForm) }}
+
+                {{ form_row(registrationForm.lastname) }}
+
+                {{ form_row(registrationForm.firstname) }}
+
+                {{ form_row(registrationForm.email) }}
+
+                {{ form_row(registrationForm.plainPassword) }}
+
+                {{ form_row(registrationForm.agreeTerms) }}
+
+                {# Affichage du captcha avec la clé publique récupérée directement grâce à la passerelle faite dans twig.yaml #}
+                <div class="">
+                    <p class="mb-2">Captcha de sécurité</p>
+                    <div class="g-recaptcha" data-sitekey="{{ google_recaptcha_site_key }}"></div>
+                </div>
+
+                {# Fermeture du formulaire #}
+                {{ form_end(registrationForm) }}
+
 
             </div>
         </div>
     </div>
+{% endblock %}
+{% block css %}
+    {# Insertion du fichier JS dans le block stylesheets, ce n'est pas une erreur, la documentation de Recaptcha préconise en effet d'intégrer ce fichier JS dans le head #}
+    <script src="https://www.google.com/recaptcha/api.js"></script>
 {% endblock %}

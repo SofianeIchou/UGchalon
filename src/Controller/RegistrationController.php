@@ -15,6 +15,8 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 use \DateTime;
 use App\Repository\UserRepository;
+use App\Recaptcha\RecaptchaValidator;
+use Symfony\Component\Form\FormError;
 
 
 class RegistrationController extends AbstractController
@@ -29,7 +31,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/inscription", name="app_register")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, RecaptchaValidator $recaptcha): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -59,7 +61,9 @@ class RegistrationController extends AbstractController
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
             // do anything else you need here, like send an email
+            $this->addFlash('success', 'Votre compte a été créé avec succès, un email de confirmation vous a été envoyé !');
 
+            // Redirection de l'utilisateur sur la route "home" (la page d'accueil)
             return $this->redirectToRoute('home');
         }
 

@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 
 class MainController extends AbstractController
 {
@@ -28,6 +28,16 @@ class MainController extends AbstractController
     public function profil(): Response
     {
         return $this->render('main/profil.html.twig');
+    }
+
+    /**
+     * Page de contact
+     *
+     * @Route("/contact/", name="contact")
+     */
+    public function contact(): Response
+    {
+        return $this->render('main/contact.html.twig');
     }
 
 }
