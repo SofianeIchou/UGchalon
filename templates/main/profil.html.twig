@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon profil{% endblock %}
+
+{% block body %}
+    <!-- Bloc supérieur histoire/img/dernier article-->
+    <div class="row">
+      <h1 class="col-12 my-5 text-center">Gestion du profil</h1>
+  </div>
+
+{# Bloc de droite #}
+<div class="col-12 col-md-12 px-2 py-3 btn-yellow d-flex justify-content-center align-items-center">
+
+  {# Infos du compte #}
+  <ul class="list-group col-12 col-md-8 p-0">
+      <li class="list-group-item bg-black">Adresse Email : <span class="text-info">{{ app.user.email }}</span></li>
+      <li class="list-group-item bg-black">Date d'inscription : <span class="text-info">{{ app.user.registerDate|date('d/m/Y à H\\hi') }}</span></li>
+      <li class="list-group-item bg-black">Compte : <span class="text-info">{{ is_granted('ROLE_ADMIN') ? 'Administrateur' : 'Utilisateur'}}</span></li>
+  </ul>
+
+</div>
+
+{% endblock %}
