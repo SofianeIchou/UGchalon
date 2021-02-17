@@ -33,7 +33,7 @@
                 {{ form_row(registrationForm.agreeTerms) }}
 
                 {# Affichage du captcha avec la clé publique récupérée directement grâce à la passerelle faite dans twig.yaml #}
-                <div class="">
+                <div class="form-group">
                     <p class="mb-2">Captcha de sécurité</p>
                     <div class="g-recaptcha" data-sitekey="{{ google_recaptcha_site_key }}"></div>
                 </div>
