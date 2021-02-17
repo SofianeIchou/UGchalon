@@ -13,6 +13,7 @@ use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
+use \DateTime;
 
 class RegistrationController extends AbstractController
 {
@@ -33,7 +34,9 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
+
+            $user->setRegisterDate(new DateTime());
+
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,

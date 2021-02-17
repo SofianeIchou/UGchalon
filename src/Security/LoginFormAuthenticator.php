@@ -84,7 +84,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
             return true;
         }
 
-        throw new CustomUserMessageAuthenticationException('Mot de passe invalide !');
+        throw new CustomUserMessageAuthenticationException('Mot de passe invalide.');
     }
 
     /**
