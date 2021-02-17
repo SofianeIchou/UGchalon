@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="h-100">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,14 +13,18 @@
     {# Inclusion des fichiers CSS individuels des pages #}
     {% block css %}{% endblock %}
 </head>
-<body>
+<body class="d-flex flex-column h-100">
 
     <header>
         <!-- Barre du menu de naviguation -->
-        <!-- faire un petit logo -->
-        <nav class="navbar navbar-expand-lg navbar-default justify-content-between">
+        <!-- TODO faire un petit logo -->
+        <nav class="navbar navbar-expand-sm navbar-default">
 
             <a class="navbar-brand" href="#">LOGO</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
@@ -43,49 +47,52 @@
                         <a class="nav-link" href="{{ path('contact') }}">Contact</a>
                     </li>
                 </ul>
+
+                <ul class="navbar-nav">
+                    {% if app.user %}
+                        <li class="nav-item">
+                            <a href="{{ path('profil') }}" class="nav-link">Profil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('app_logout') }}" class="nav-link"><i class="fas fa-sign-out-alt mr-1"></i>Déconnexion</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+                        </li>
+                    {% endif %}
+                </ul>
+
             </div>
-
-            <ul class="navbar-nav mr-auto">
-                {% if app.user %}
-                    <li class="nav-item">
-                        <a href="{{ path('profil') }}" class="nav-link">Profil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ path('app_logout') }}" class="nav-link"><i class="fas fa-sign-out-alt mr-1"></i>Déconnexion</a>
-                    </li>
-                {% else %}
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
-                    </li>
-                {% endif %}
-            </ul>
-
         </nav>
+
     </header>
 
     {# Affichage du contenu principal des pages #}
     {% block body %}{% endblock %}
 
        <!-- Footer -->
-    <footer class="bg-default text-center text-lg-start">
+    <footer class="bg-default text-center text-lg-start mt-auto">
         <!-- Grid container -->
-        <div class="container col-lg-12 p-4">
+        <div class="container col-lg-12 col-md-12 col-sm-12 p-4">
         <!--Grid row-->
             <div class="row">
             <!--Grid column-->
-                <div class="col-lg-4 col-md-12">
+                <div class="col-lg-4 col-sm-12">
                     <h5 class="text-uppercase">LABEL</h5>
                     <img src="{{ asset('src/ffgym.jpg') }}" class="footer_img" alt="label_ffg">
                     <img src="{{ asset('src/babygym.jpg') }}" class="footer_img" alt="label_babygym">
                 </div>
+
                 <!--Grid column-->
 
                 <!--Grid column-->
-                <div class="col-lg-4 col-md-12">
-                    <h5 class="text-uppercase">CONTACT</h5>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="vl">
+                    <h5 class="text-uppercase mb-3">CONTACT</h5>
 
                     <ul class="list-unstyled mb-0">
                         <li>
@@ -94,13 +101,17 @@
                         <li>
                             <p><a href="mailto:ugchalon@gmail.com">Envoyez nous un mail !</a></p>
                         </li>
+                        <li>
+                            <p class="fb-p"><a href="#"><i class="fab fa-facebook fa-2x"></i>Rejoignez-nous !</a></p>
+                        </li>
                     </ul>
+                    </div>
                 </div>
                 <!--Grid column-->
 
                 <!--Grid column-->
-                <div class="col-lg-4 col-md-12">
-                    <h5 class="text-uppercase mb-0">C.G.U.</h5>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <h5 class="text-uppercase mb-5">C.G.U.</h5>
 
                     <ul class="list-unstyled">
                         <li>
