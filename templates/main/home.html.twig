@@ -5,13 +5,16 @@
 {% block body %}
     <!-- Bloc supérieur histoire/img/dernier article-->
 <div class="container">
+
+  {% include 'partials/flashes/success.html.twig' %}
+
     <div class="row">
         <div class="col-lg-5">
             <h1>Histoire</h1>
             <p>En 1937, juste avant la guerre, c’est le Front Populaire, la France est en pleine mutation sociale mais la gymnastique reste sur sa lancée. Elle se pratique principalement en plein air sur les stades. Les gymnastes évoluent en groupes et proposent des chorégraphies sous forme de préliminaires et mouvements d’ensembles. Les épreuves individuelles existent et elles sont souvent associées à des épreuves d’athlétisme : saut en hauteur, lancer de poids, sprint et montées de cordes lisses ou à nœuds. Les salles de gymnastique sont souvent inadaptées, poussiéreuses et désuètes, le matériel rudimentaire et inconfortable. Les agrès sont quelquefois de fabrication artisanale et ne répondent pas aux normes exigeantes d’aujourd’hui</p>
         </div>
         <div class="col-lg-2">
-            <img src="src/carré.png" alt="carré">
+            <img src="../src/carré.png" alt="carré">
         </div>
         <div class="col-lg-5">
             <h1 class="right">Dernier article</h1>
