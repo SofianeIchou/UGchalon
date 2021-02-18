@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Informations utilisateurs{% endblock %}
+
+{% block body %}
+
+
+
+<div class="container-fluid">
+
+  <div class="row">
+            <h1 class="col-12 text-center my-5 h1-title-page">Informations utilisateurs</h1>
+  </div>
+
+{# Infos du compte #}
+  <div class="row">
+
+      <div class="bloc-infos col-12 col-md-4 offset-md-4 my-3">
+
+        {% for user in users %}
+        <ul class="list-group col-12 col-md-8 p-0">
+          <li class="list-group-item bg-black">Prénom : <span class="text-info">{{ user.firstname }}</span></li>
+          <li class="list-group-item bg-black">Nom : <span class="text-info">{{ user.lastname }}</span></li>
+          <li class="list-group-item bg-black">Email : <span class="text-info">{{ user.email }}</span></li>
+          <li class="list-group-item bg-black">Date d'inscription : <span class="text-info">{{ user.registerDate|date('d/m/Y à H\\hi') }}</span></li>
+        </ul>
+        {% endfor %}
+
+      </div>
+
+  </div>
+
+  <div class="row">
+
+          {# Bouton modifier profil #}
+          {#<button class="btn btn-yellow col-12 col-md-4 offset-md-4 my-3"><a href="#">Modifier les informations du profil</a></button>#}
+
+  </div>
+
+
+    </div>
+</div>
+
+
+
+
+{% endblock %}
+

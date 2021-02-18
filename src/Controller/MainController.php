@@ -74,6 +74,10 @@ class MainController extends AbstractController
 
             $em->flush();
 
+            $this->addFlash('success', 'Licencié bien ajouté.');
+
+            return $this->redirectToRoute('licensed');
+
         }
 
         return $this->render('main/addLicensed.html.twig', [
@@ -90,6 +94,24 @@ class MainController extends AbstractController
     public function licensed(): Response
     {
         return $this->render('main/licensed.html.twig');
+    }
+
+    /**
+     * Page d'affichage des données utilisateurs'
+     *
+     * @Route("/admin/utilisateurs/", name="user_data")
+     */
+    public function userData(): Response
+    {
+
+        $userRepository = $this->getDoctrine()->getRepository(User::class);
+
+        $usersFound = $userRepository->findAll();
+
+
+        return $this->render('main/userData.html.twig', [
+            'users' => $usersFound
+        ]) ;
     }
 
 }

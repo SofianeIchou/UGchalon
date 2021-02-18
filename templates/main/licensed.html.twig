@@ -4,6 +4,7 @@
 
 {% block body %}
 <div class="container-fluid">
+    {% include 'partials/flashes/success.html.twig' %}
     <!-- Bloc supérieur histoire/img/dernier article-->
     <div class="row">
       <h1 class="col-12 my-5 text-center">Informations licencié(es)</h1>
@@ -28,7 +29,7 @@
 
 
   {# Infos du compte #}
-  
+
   <button type="submit">
     <a href="{{path('add_licensed')}}">
       Ajouter un(e) licencié(é)
