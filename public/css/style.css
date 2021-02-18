@@ -1,13 +1,57 @@
+@font-face {
+    font-family: 'Bebas Neue';
+    src: url('../font/BebasNeue-Regular.woff2') format('woff2'),
+        url('../font/BebasNeue-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
+
 /* NAVBAR/HEADER */
 
 .navbar-default{
     background-color: #E0B43F;
+    font-family: 'Bebas Neue';
+    font-size: 20px;
 }
 
 .navbar-default .navbar-nav  a  {
     color: #292827;
-   }
+}
 
+.logo-navbar{
+    width: 60px;
+    padding: auto;
+}
+
+.navbar-toggler {
+    border-color: rgb(0, 0, 0);
+   }
+.navbar-toggler:hover {
+    border-color: rgb(173, 133, 2);
+}
+.navbar-toggler .icon {
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+
+
+/* ALL PAGE */
+.h1-title-page{
+    padding-top: 2rem;
+    font-size: 4rem;
+    text-align: center;
+    font-family: 'Bebas Neue';
+}
+
+h5{
+    font-family: 'Bebas Neue';
+    font-size: 25px;
+}
 
 
 
@@ -18,12 +62,17 @@
     margin-top: 4rem;
 }
 
+
 p{
     text-align: justify;
     color: #75716B;
 }
 
 h1{
+    color: #E0B43F;
+}
+
+h2{
     color: #E0B43F;
 }
 
@@ -45,16 +94,36 @@ h1{
 }
 
 .carousel-caption{
-    text-align: center;
+    border: 1px white solid;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.205);
 }
 
 p.slide-p{
     text-align: center;
-    color: white;
+    color: #292827;
 }
 
 
+/* page contact */
+.contact{
+    padding-left: 100px;
+}
 
+
+.h3-contact{
+    font-size: 20px;
+}
+
+.p-contact{
+    padding-left: 1rem;
+}
+
+.carte{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 /* FOOTER */
 .bg-default{
