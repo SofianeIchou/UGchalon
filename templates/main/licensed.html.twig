@@ -6,36 +6,49 @@
 <div class="container-fluid">
     <!-- Bloc supérieur histoire/img/dernier article-->
     <div class="row">
-      <h1 class="col-12 my-5 text-center">Informations licencié(es)</h1>
+      <h1 class="col-12 my-5 text-center h1-title-page">Informations licencié(es)</h1>
   </div>
 
-{# Bloc de droite #}
-<div class="">
+  <div class="row">
 
-  {% for licensed in app.user.licenseds %}
-  <ul class="list-group col-12 col-md-8 p-0">
-    <li class="list-group-item bg-black">Prénom : <span class="text-info">{{ licensed.firstname }}</span></li>
-    <li class="list-group-item bg-black">Nom : <span class="text-info">{{ licensed.lastname }}</span></li>
-    <li class="list-group-item bg-black">Genre : <span class="text-info">{{ licensed.gender }}</span></li>
-    <li class="list-group-item bg-black">Date de naissance : <span class="text-info">{{ licensed.firstname }}</span></li>
-    <li class="list-group-item bg-black">Adresse : <span class="text-info">{{ licensed.address }}</span></li>
-    <li class="list-group-item bg-black">Ville : <span class="text-info">{{ licensed.city }}</span></li>
-    <li class="list-group-item bg-black">Numéro de sécurité sociale : <span class="text-info">{{ licensed.socialSecurityNumber }}</span></li>
-    <li class="list-group-item bg-black">Discipline : <span class="text-info">{{ licensed.discipline }}</span></li>
-    <li class="list-group-item bg-black">Remarque(s) médicale : <span class="text-info">{{ licensed.medicalRemark }}</span></li>
-  </ul>
-  {% endfor %}
+        {% for licensed in app.user.licenseds %}
 
 
-  {# Infos du compte #}
-  
-  <button type="submit">
-    <a href="{{path('add_licensed')}}">
-      Ajouter un(e) licencié(é)
-    </a>
-  </button>
+        <div class="card card-licensed-user col-lg-8 offset-lg-2">
+          <div class="card-body">
+            <h2 class="card-title h2-title-licensed"><span>{{ licensed.firstname }} </span><span>{{ licensed.lastname }}</h2>
+            <h5 class="card-subtitle mb-2 text-muted">Informations enregistrées</h5>
+            <div class="card-text">
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-light col-6 my-2">Genre : <span class="text-info">{{ licensed.gender }}</span></li>
+                <li class="list-group-item list-group-item-light col-6 my-2">Date de naissance : <span class="text-info">{{ licensed.firstname }}</span></li>
+                <li class="list-group-item list-group-item-light col-6 my-2">Adresse : <span class="text-info">{{ licensed.address }}</span></li>
+                <li class="list-group-item list-group-item-light col-6 my-2">Ville : <span class="text-info">{{ licensed.city }}</span></li>
+                <li class="list-group-item list-group-item-light col-6 my-2">Numéro de sécurité sociale : <span class="text-info">{{ licensed.socialSecurityNumber }}</span></li>
+                <li class="list-group-item list-group-item-light col-6 my-2">Discipline : <span class="text-info">{{ licensed.discipline }}</span></li>
+                <li class="list-group-item list-group-item-light col-6 my-2">Remarque(s) médicale : <span class="text-info">{{ licensed.medicalRemark }}</span></li>
+              </ul>
+            </div>
+              <div class="d-flex justify-content-between">
+                <button class="btn btn-yellow col-5 ml-4 mt-3">
+                  <a href="#">
+                    Modifier les informations
+                  </a>
+                </button>
+                <button class="btn btn-danger col-5 mr-4 mt-3">
+                  <a href="#">
+                    Supprimer ce licencié
+                  </a>
+                </button>
+              </div>
+          </div>
+        </div>
+      {% endfor %}
 
-</div>
+
+
+  </div>
 </div>
 
 {% endblock %}
+

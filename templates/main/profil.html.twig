@@ -18,19 +18,19 @@
       <div class="bloc-infos col-12 col-md-4 offset-md-4 my-3">
 
           <div>
-              <p><span>Nom </span>: {{ app.user.lastname }}</p>
+              <p><span>Nom </span>: <b>{{ app.user.lastname }}</b></p>
           </div>
           <div>
-              <p><span>Prénom </span>: {{ app.user.firstname }}</p>
+              <p><span>Prénom </span>: <b>{{ app.user.firstname }}</b></p>
           </div>
           <div>
-              <p><span>Adresse email </span>: {{ app.user.email }}</p>
+              <p><span>Adresse email </span>: <b>{{ app.user.email }}</b></p>
           </div>
           <div>
-              <p><span>Date d'inscription</span>: {{ app.user.registerDate|date('d/m/Y à H\\hi') }}</p>
+              <p><span>Date d'inscription</span>: <b>{{ app.user.registerDate|date('d/m/Y à H\\hi') }}</b></p>
           </div>
           <div>
-              <p><span>Rôle </span>: {{ is_granted('ROLE_ADMIN') ? 'Administrateur' : 'Utilisateur'}}</p>
+              <p><span>Rôle </span>: <b>{{ is_granted('ROLE_ADMIN') ? 'Administrateur' : 'Utilisateur'}}</b></p>
           </div>
 
       </div>
@@ -43,7 +43,7 @@
           <button class="btn btn-yellow col-12 col-md-4 offset-md-4 my-3"><a href="#">Modifier les informations du profil</a></button>
 
           {# Bouton pour ajouter un licencié #}
-          <button class="btn btn-yellow col-12 col-md-4 offset-md-4 my-3"><a href="#">Ajouter un(e) nouveau licencié(e)</a></button>
+          <button class="btn btn-yellow col-12 col-md-4 offset-md-4 my-3"><a href="{{ path("add_licensed") }}">Ajouter un(e) nouveau licencié(e)</a></button>
 
   </div>
 

@@ -189,3 +189,23 @@ footer p i{
 }
 
 
+.h2-title-licensed{
+    padding-top: 1rem;
+    font-size: 2rem;
+    text-align: center;
+    font-family: 'Bebas Neue';
+}
+
+ul.list-group{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card-licensed-user{
+    margin-bottom: 5rem;
+}
+
+a{
+    color: rgb(76, 77, 74);
+}
