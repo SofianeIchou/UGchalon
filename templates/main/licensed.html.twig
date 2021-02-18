@@ -18,7 +18,7 @@
     <li class="list-group-item bg-black">Prénom : <span class="text-info">{{ licensed.firstname }}</span></li>
     <li class="list-group-item bg-black">Nom : <span class="text-info">{{ licensed.lastname }}</span></li>
     <li class="list-group-item bg-black">Genre : <span class="text-info">{{ licensed.gender }}</span></li>
-    <li class="list-group-item bg-black">Date de naissance : <span class="text-info">{{ licensed.firstname }}</span></li>
+    <li class="list-group-item bg-black">Date de naissance : <span class="text-info">{{ licensed.birthdate|date('d/m/Y') }}</span></li>
     <li class="list-group-item bg-black">Adresse : <span class="text-info">{{ licensed.address }}</span></li>
     <li class="list-group-item bg-black">Ville : <span class="text-info">{{ licensed.city }}</span></li>
     <li class="list-group-item bg-black">Numéro de sécurité sociale : <span class="text-info">{{ licensed.socialSecurityNumber }}</span></li>
