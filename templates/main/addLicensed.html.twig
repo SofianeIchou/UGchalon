@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+
+  {% include 'partials/flashes/success.html.twig' %}
+
+  <div class="row">
+    <h1 class="col-12 text-center my-5">Ajouter un licencié</h1>
+  </div>
+
+  <div class="row">
+      <div class="col-12 col-md-4 offset-md-4 my-3">
+
+        {{ form(licensedForm) }}
+
+      </div>
+  </div>
+</div>
+
+{% endblock %}

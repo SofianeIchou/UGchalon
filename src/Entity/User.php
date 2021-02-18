@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -55,6 +57,16 @@ class User implements UserInterface
      * @ORM\Column(type="boolean")
      */
     private $isVerified = false;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Licensed::class, mappedBy="user")
+     */
+    private $licenseds;
+
+    public function __construct()
+    {
+        $this->licenseds = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -181,6 +193,36 @@ class User implements UserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Licensed[]
+     */
+    public function getLicenseds(): Collection
+    {
+        return $this->licenseds;
+    }
+
+    public function addLicensed(Licensed $licensed): self
+    {
+        if (!$this->licenseds->contains($licensed)) {
+            $this->licenseds[] = $licensed;
+            $licensed->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLicensed(Licensed $licensed): self
+    {
+        if ($this->licenseds->removeElement($licensed)) {
+            // set the owning side to null (unless already changed)
+            if ($licensed->getUser() === $this) {
+                $licensed->setUser(null);
+            }
+        }
 
         return $this;
     }

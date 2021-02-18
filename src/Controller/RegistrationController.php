@@ -37,13 +37,16 @@ class RegistrationController extends AbstractController
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
+        // Verification lorsque le formulaire est envoyé
         if ($form->isSubmitted()) {
 
             if(!$recaptcha->verify( $request->request->get('g-recaptcha-response'), $request->server->get('REMOTE_ADDR') )){
 
-                // Ajout d'une nouvelle erreur manuellement dans le formulaire
+                // Ajout d'une nouvelle erreur dans le formulaire
                 $form->addError(new FormError('Le Captcha doit être validé.'));
             }
+
+            // Si le formulaire est valide
             if($form->isValid()){
 
 
@@ -56,11 +59,12 @@ class RegistrationController extends AbstractController
                     )
                 );
 
+                // Ajout de l'utilisateur en BDD
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($user);
                 $entityManager->flush();
 
-                // generate a signed url and email it to the user
+                // Génère et envoie un mail de confirmation
                 $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                     (new TemplatedEmail())
                         ->from(new Address('noreply@ugchalon.fr', 'UG Chalon'))
@@ -68,7 +72,7 @@ class RegistrationController extends AbstractController
                         ->subject('Please Confirm your Email')
                         ->htmlTemplate('registration/confirmation_email.html.twig')
                 );
-                // do anything else you need here, like send an email
+
                 $this->addFlash('success', 'Votre compte a été créé avec succès, un email de confirmation vous a été envoyé !');
 
                 // Redirection de l'utilisateur sur la route "home" (la page d'accueil)
@@ -98,7 +102,6 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('app_register');
         }
 
-        // validate email confirmation link, sets User::isVerified=true and persists
         try {
             $this->emailVerifier->handleEmailConfirmation($request, $user);
         } catch (VerifyEmailExceptionInterface $exception) {
@@ -107,7 +110,6 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('app_register');
         }
 
-        // @TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'Votre adresse email a bien été vérifiée.');
 
         return $this->redirectToRoute('app_login');
