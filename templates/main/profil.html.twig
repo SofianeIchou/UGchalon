@@ -3,23 +3,55 @@
 {% block title %}Mon profil{% endblock %}
 
 {% block body %}
-    <!-- Bloc supérieur histoire/img/dernier article-->
-    <div class="row">
-      <h1 class="col-12 my-5 text-center">Informations du profil</h1>
+
+
+
+<div class="container-fluid">
+
+  <div class="row">
+            <h1 class="col-12 text-center my-5 h1-title-page">Informations du profil</h1>
   </div>
 
-{# Bloc de droite #}
-<div class="col-12 col-md-12 px-2 py-3 btn-yellow d-flex justify-content-center align-items-center">
+{# Infos du compte #}
+  <div class="row">
 
-  {# Infos du compte #}
-  <ul class="list-group col-12 col-md-8 p-0">
-    <li class="list-group-item bg-black">Nom : <span class="text-info">{{ app.user.lastname }}</span></li>
-    <li class="list-group-item bg-black">Prénom : <span class="text-info">{{ app.user.firstname }}</span></li>
-      <li class="list-group-item bg-black">Adresse Email : <span class="text-info">{{ app.user.email }}</span></li>
-      <li class="list-group-item bg-black">Date d'inscription : <span class="text-info">{{ app.user.registerDate|date('d/m/Y à H\\hi') }}</span></li>
-      <li class="list-group-item bg-black">Rôle : <span class="text-info">{{ is_granted('ROLE_ADMIN') ? 'Administrateur' : 'Utilisateur'}}</span></li>
-  </ul>
+      <div class="bloc-infos col-12 col-md-4 offset-md-4 my-3">
+
+          <div>
+              <p><span>Nom </span>: {{ app.user.lastname }}</p>
+          </div>
+          <div>
+              <p><span>Prénom </span>: {{ app.user.firstname }}</p>
+          </div>
+          <div>
+              <p><span>Adresse email </span>: {{ app.user.email }}</p>
+          </div>
+          <div>
+              <p><span>Date d'inscription</span>: {{ app.user.registerDate|date('d/m/Y à H\\hi') }}</p>
+          </div>
+          <div>
+              <p><span>Rôle </span>: {{ is_granted('ROLE_ADMIN') ? 'Administrateur' : 'Utilisateur'}}</p>
+          </div>
+
+      </div>
+
+  </div>
+
+  <div class="row">
+
+          {# Bouton modifier profil #}
+          <button class="btn btn-yellow col-12 col-md-4 offset-md-4 my-3"><a href="#">Modifier les informations du profil</a></button>
+
+          {# Bouton pour ajouter un licencié #}
+          <button class="btn btn-yellow col-12 col-md-4 offset-md-4 my-3"><a href="#">Ajouter un(e) nouveau licencié(e)</a></button>
+
+  </div>
+
 
 </div>
 
+
+
+
 {% endblock %}
+

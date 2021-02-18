@@ -167,7 +167,16 @@ footer p i{
 }
 
 
-
+/* Page Profil */
+.bloc-infos{
+    border:3px solid #e0b53f;
+    padding: 20px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
 
 
 /* media query */
@@ -178,4 +187,5 @@ footer p i{
     }
 
 }
+
 
