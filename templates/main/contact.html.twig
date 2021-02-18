@@ -3,51 +3,49 @@
 {% block title %}Contact{% endblock %}
 
 {% block body %}
-    <!-- Bloc supérieur histoire/img/dernier article-->
+
     <div class="container col-lg-12">
 
-      {% include 'partials/flashes/success.html.twig' %}
+      <div class="row">
+          <div class="col-lg-5">
+              <h1>Contact</h1>
 
-        <div class="row">
-            <div class="col-lg-5">
-                <h1>Contact</h1>
+              <h2>Adresse :</h2>
+              <p>
+                Gymnase André Rey<br>
+                3 rue Henri Dunant 71100 Chalon-sur-Saône
+              </p>
 
-                <h2>Adresse :</h2>
-                <p>
-                  Gymnase André Rey<br>
-                  3 rue Henri Dunant 71100 Chalon-sur-Saône
-                </p>
+              <h2>Téléphone :</h2>
+              <p>
+                03 85 43 64 74<br>
+                (uniquement aux horaires d’ouverture)
+              </p>
 
-                <h2>Téléphone :</h2>
-                <p>
-                  03 85 43 64 74<br>
-                  (uniquement aux horaires d’ouverture)
-                </p>
+              <h2>Horaires d'ouverture :</h2>
+              <p>
+                Lundi : 17h30 à 20h<br>
+                Mardi : 17h30 à 20h<br>
+                Mercredi : 10h à 12h et de 13h30 à 20h30<br>
+                Jeudi : 17h30 à 20h<br>
+                Vendredi : 17h30 à 20h<br>
+                Samedi : 9h à 12h et de 13h30 à 16h30<br>
+                Dimanche : 9h à 12h
+              </p>
 
-                <h2>Horaires d'ouverture :</h2>
-                <p>
-                  Lundi : 17h30 à 20h<br>
-                  Mardi : 17h30 à 20h<br>
-                  Mercredi : 10h à 12h et de 13h30 à 20h30<br>
-                  Jeudi : 17h30 à 20h<br>
-                  Vendredi : 17h30 à 20h<br>
-                  Samedi : 9h à 12h et de 13h30 à 16h30<br>
-                  Dimanche : 9h à 12h
-                </p>
-
-                <p><b>Mail :</b>
-                  <a href="mailto:ugchalon@gmail.com">
-                    ugchalon@gmail.com
-                  </a>
-                </p>
-            </div>
-            <div class="col-lg-2">
-                <img src="../src/carré.png" alt="carré">
-            </div>
-            <div class="col-lg-5">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10924.239612608495!2d4.8665176!3d46.8031259!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9a40a5fea1c65d27!2sGymnase%20Andr%C3%A9%20Rey!5e0!3m2!1sfr!2sfr!4v1613575059310!5m2!1sfr!2sfr" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-            </div>
-        </div>
+              <p><b>Mail :</b>
+                <a href="mailto:ugchalon@gmail.com">
+                  ugchalon@gmail.com
+                </a>
+              </p>
+          </div>
+          <div class="col-lg-2">
+              <img src="{{asset('src/carré.png')}}" alt="carré">
+          </div>
+          <div class="col-lg-5">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10924.239612608495!2d4.8665176!3d46.8031259!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9a40a5fea1c65d27!2sGymnase%20Andr%C3%A9%20Rey!5e0!3m2!1sfr!2sfr!4v1613575059310!5m2!1sfr!2sfr" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+          </div>
+      </div>
     </div>
 
 {% endblock %}

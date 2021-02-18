@@ -19,6 +19,8 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
 use Symfony\Component\Security\Guard\PasswordAuthenticatedInterface;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+
 
 class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements PasswordAuthenticatedInterface
 {
@@ -30,13 +32,15 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     private $urlGenerator;
     private $csrfTokenManager;
     private $passwordEncoder;
+    private $session;
 
-    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder, SessionInterface $session)
     {
         $this->entityManager = $entityManager;
         $this->urlGenerator = $urlGenerator;
         $this->csrfTokenManager = $csrfTokenManager;
         $this->passwordEncoder = $passwordEncoder;
+        $this->session = $session;
     }
 
     public function supports(Request $request)
@@ -100,6 +104,8 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);
         }
+
+        $this->session->getFlashBag()->add('success', 'Vous êtes bien connecté.');
 
         return new RedirectResponse($this->urlGenerator->generate('home'));
     }

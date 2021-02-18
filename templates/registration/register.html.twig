@@ -32,7 +32,7 @@
 
                 {{ form_row(registrationForm.agreeTerms) }}
 
-                {# Affichage du captcha avec la clé publique récupérée directement grâce à la passerelle faite dans twig.yaml #}
+                {# Affichage du captcha avec la clé publique #}
                 <div class="form-group">
                     <p class="mb-2">Captcha de sécurité</p>
                     <div class="g-recaptcha" data-sitekey="{{ google_recaptcha_site_key }}"></div>
@@ -47,6 +47,6 @@
     </div>
 {% endblock %}
 {% block css %}
-    {# Insertion du fichier JS dans le block stylesheets, ce n'est pas une erreur, la documentation de Recaptcha préconise en effet d'intégrer ce fichier JS dans le head #}
+    {# Insertion du fichier JS #}
     <script src="https://www.google.com/recaptcha/api.js"></script>
 {% endblock %}
