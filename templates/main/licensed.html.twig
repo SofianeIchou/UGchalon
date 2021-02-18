@@ -1,24 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Licencié(es){% endblock %}
 
 {% block body %}
-
 <div class="container-fluid">
-
-  {% include 'partials/flashes/success.html.twig' %}
-
-  <div class="row">
-    <h1 class="col-12 text-center my-5">Ajouter un licencié</h1>
+    <!-- Bloc supérieur histoire/img/dernier article-->
+    <div class="row">
+      <h1 class="col-12 my-5 text-center">Informations licencié(es)</h1>
   </div>
 
-  <div class="row">
-      <div class="col-12 col-md-4 offset-md-4 my-3">
+{# Bloc de droite #}
+<div class="">
 
-        {{ form(licensedForm) }}
+  {% for licensed in app.user.licenseds %}
+  <ul class="list-group col-12 col-md-8 p-0">
+    <li class="list-group-item bg-black">Prénom : <span class="text-info">{{ licensed.firstname }}</span></li>
+    <li class="list-group-item bg-black">Nom : <span class="text-info">{{ licensed.lastname }}</span></li>
+    <li class="list-group-item bg-black">Genre : <span class="text-info">{{ licensed.gender }}</span></li>
+    <li class="list-group-item bg-black">Date de naissance : <span class="text-info">{{ licensed.firstname }}</span></li>
+    <li class="list-group-item bg-black">Adresse : <span class="text-info">{{ licensed.address }}</span></li>
+    <li class="list-group-item bg-black">Ville : <span class="text-info">{{ licensed.city }}</span></li>
+    <li class="list-group-item bg-black">Numéro de sécurité sociale : <span class="text-info">{{ licensed.socialSecurityNumber }}</span></li>
+    <li class="list-group-item bg-black">Discipline : <span class="text-info">{{ licensed.discipline }}</span></li>
+    <li class="list-group-item bg-black">Remarque(s) médicale : <span class="text-info">{{ licensed.medicalRemark }}</span></li>
+  </ul>
+  {% endfor %}
 
-      </div>
-  </div>
+
+  {# Infos du compte #}
+  
+  <button type="submit">
+    <a href="{{path('add_licensed')}}">
+      Ajouter un(e) licencié(é)
+    </a>
+  </button>
+
+</div>
 </div>
 
 {% endblock %}

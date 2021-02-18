@@ -21,7 +21,7 @@
         <nav class="navbar navbar-expand-sm navbar-default">
 
 
-                <a class="navbar-brand" href="#"><img class="logo-navbar" src="{{ asset('src/logo.png') }}" alt="logo-ugc"></a>
+                <a class="navbar-brand" href="{{ path('home') }}"><img class="logo-navbar" src="{{ asset('src/logo.png') }}" alt="logo-ugc"></a>
 
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,7 +56,7 @@
                             <a href="{{ path('profil') }}" class="nav-link">Profil</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ path('licensed') }}" class="nav-link">Licencié(es)</a>
+                            <a href="{{ path('licensed') }}" class="nav-link">Licencié(e)</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ path('app_logout') }}" class="nav-link"><i class="fas fa-sign-out-alt mr-1"></i>Déconnexion</a>

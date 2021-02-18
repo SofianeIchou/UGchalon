@@ -20,7 +20,6 @@ class MainController extends AbstractController
      */
     public function home(): Response
     {
-        // Cette page appellera la vue templates/main/home.html.twig
         return $this->render('main/home.html.twig');
     }
 
@@ -48,10 +47,10 @@ class MainController extends AbstractController
     /**
      * Page d'ajout d'un licencié
      *
-     * @Route("/license/", name="licensed")
+     * @Route("/ajouter-licence/", name="add_licensed")
      * @Security("is_granted('ROLE_USER')")
      */
-    public function licensed(Request $request): Response
+    public function addLicensed(Request $request): Response
     {
 
         // Création d'un nouvel objet de la classe Licensed, vide pour le moment
@@ -77,9 +76,20 @@ class MainController extends AbstractController
 
         }
 
-        return $this->render('main/licensed.html.twig', [
+        return $this->render('main/addLicensed.html.twig', [
             'licensedForm' => $form->createView()
         ]);
+    }
+
+    /**
+     * Page d'affichage des infos. du ou des licenciés
+     *
+     * @Route("/licence/", name="licensed")
+     * @Security("is_granted('ROLE_USER')")
+     */
+    public function licensed(): Response
+    {
+        return $this->render('main/licensed.html.twig');
     }
 
 }
