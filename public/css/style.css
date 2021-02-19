@@ -9,7 +9,6 @@
 
 
 
-
 /* NAVBAR/HEADER */
 
 .navbar-default{
@@ -208,4 +207,21 @@ ul.list-group{
 
 a{
     color: rgb(76, 77, 74);
+}
+
+section{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.bloc-section{
+    padding: 20px;
+    margin-bottom: 100px;
+    border:3px solid #e0b53f;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
 }

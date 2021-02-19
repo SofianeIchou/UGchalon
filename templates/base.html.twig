@@ -36,10 +36,11 @@
                     <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Discipline </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Baby Gym</a>
-                            <a class="dropdown-item" href="#">Loisir</a>
+                            <a class="dropdown-item" href="{{ path('disciplines') }}">Toutes les disciplines</a>
                         <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Gymnastique masculine</a>
+                            <a class="dropdown-item" href="{{ path('disciplines_gam') }}">Gymnastique masculine</a>
+                            <a class="dropdown-item" href="{{ path('disciplines_babygym') }}">Baby Gym</a>
+                            <a class="dropdown-item" href="{{ path('disciplines_loisirs') }}">Loisir</a>
                         </div>
                     </li>
                     <li class="nav-item">

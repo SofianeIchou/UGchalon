@@ -24,6 +24,46 @@ class MainController extends AbstractController
     }
 
     /**
+     * Page des discipline
+     *
+    * @Route("/disciplines/", name="disciplines")
+    */
+    public function disciplines(): Response
+    {
+        return $this->render('main/disciplines.html.twig');
+    }
+
+    /**
+     * Page de gymnastique artistique masculine
+     *
+    * @Route("/disciplines/gam", name="disciplines_gam")
+    */
+    public function disciplines_gam(): Response
+    {
+        return $this->render('main/disciplines_gam.html.twig');
+    }
+
+    /**
+     * Page de babygym
+     *
+    * @Route("/disciplines/babygym", name="disciplines_babygym")
+    */
+    public function disciplines_babygym(): Response
+    {
+        return $this->render('main/disciplines_babygym.html.twig');
+    }
+
+    /**
+     * Page de loisir
+     *
+    * @Route("/disciplines/loisirs", name="disciplines_loisirs")
+    */
+    public function disciplines_loisirs(): Response
+    {
+        return $this->render('main/disciplines_loisirs.html.twig');
+    }
+
+    /**
      * Page de profil
      *
      * @Route("/mon-profil/", name="profil")
