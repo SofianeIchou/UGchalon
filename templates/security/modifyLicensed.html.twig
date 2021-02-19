@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier mes licencié(es){% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <h1 class="col-12 text-center my-5 h1-title-page">Modifier mes licencié(es)</h1>
+        </div>
+
+        <div class="row">
+
+            <div class="bloc-infos col-12 col-md-4 offset-md-4 my-3">
+
+                {{ form(modifyLicensedForm) }}
+
+            </div>
+
+    </div>
+{% endblock %}
