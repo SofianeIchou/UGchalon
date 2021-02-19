@@ -31,10 +31,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ path('home') }}">Accueil <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ path('home') }}"><i class="fas fa-home mr-1"></i>Accueil <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Disciplines </a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-running mr-1"></i> Disciplines </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">Baby Gym</a>
                             <a class="dropdown-item" href="#">Loisir</a>
@@ -43,25 +43,25 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Articles</a>
+                        <a class="nav-link" href="#"><i class="fas fa-newspaper mr-1"></i>Articles</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('contact') }}">Contacts</a>
+                        <a class="nav-link" href="{{ path('contact') }}"><i class="fas fa-address-book mr-1"></i>Contacts</a>
                     </li>
                 </ul>
 
                 <ul class="navbar-nav">
                     {% if is_granted("ROLE_ADMIN") %}
                     <li class="nav-item">
-                        <a href="{{ path('user_data') }}" class="nav-link">Données Utilisateurs</a>
+                        <a href="{{ path('licensed_data') }}" class="nav-link"><i class="fas fa-database mr-1"></i>Données Licencié(e)s</a>
                     </li>
                     {% endif %}
                     {% if app.user %}
                         <li class="nav-item">
-                            <a href="{{ path('profil') }}" class="nav-link">Profil</a>
+                            <a href="{{ path('profil') }}" class="nav-link"><i class="fas fa-user-alt mr-1"></i>Profil</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ path('licensed') }}" class="nav-link">Licencié(es)</a>
+                            <a href="{{ path('licensed') }}" class="nav-link"><i class="fas fa-id-badge mr-1"></i></i>Licencié(es)</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ path('app_logout') }}" class="nav-link"><i class="fas fa-sign-out-alt mr-1"></i>Déconnexion</a>
@@ -106,10 +106,10 @@
 
                     <ul class="list-unstyled mb-0">
                         <li>
-                            <p>Tél. 03 85 43 64 74</p>
+                            <p><a href="telto:0385436474"><i class="fas fa-phone-alt fa-2x"></i>Tél. 03 85 43 64 74</a></p>
                         </li>
                         <li>
-                            <p><a href="mailto:ugchalon@gmail.com">Envoyez nous un mail !</a></p>
+                            <p><a href="mailto:ugchalon@gmail.com"><i class="far fa-envelope fa-2x"></i>Envoyez nous un mail !</a></p>
                         </li>
                         <li>
                             <p class="fb-p"><a href="#"><i class="fab fa-facebook fa-2x"></i>Rejoignez-nous !</a></p>
