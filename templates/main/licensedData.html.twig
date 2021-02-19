@@ -7,7 +7,7 @@
 
 
 <div class="container-fluid">
-
+  {% include 'partials/flashes/success.html.twig' %}
   <div class="row">
     <button class="btn btn-yellow col-12 col-md-4 offset-md-4 my-3"><a href="{{ path("add_licensed") }}">Ajouter un(e) nouveau licencié(e)</a></button>
     <h1 class="col-12 text-center my-5 h1-title-page">Données licencié(es)</h1>
@@ -33,6 +33,11 @@
                 <li class="list-group-item list-group-item-light col-6 my-2">Numéro de sécurité sociale : <span class="text-info">{{ licensed.socialSecurityNumber }}</span></li>
                 <li class="list-group-item list-group-item-light col-6 my-2">Discipline : <span class="text-info">{{ licensed.discipline }}</span></li>
                 <li class="list-group-item list-group-item-light col-6 my-2">Remarque(s) médicale : <span class="text-info">{{ licensed.medicalRemark }}</span></li>
+                {% set numbers = [] %}
+                {% for phone in licensed.phones %}
+                  {% set numbers = numbers|merge([phone.number]) %}
+                  <li class="list-group-item list-group-item-light col-6 my-2">Numéros de téléphone : <span class="text-info">{{ numbers|join(', ') }}</span></li>
+                {% endfor %}
               </ul>
             </div>
               <div class="d-flex justify-content-between">
@@ -44,6 +49,11 @@
                 <button class="btn btn-danger col-5 mr-4 mt-3">
                   <a href="{{path('delete_licensed', {id: licensed.id})}}">
                     Supprimer ce licencié
+                  </a>
+                </button>
+                <button class="btn btn-yellow col-5 mr-4 mt-3">
+                  <a href="{{path('add_phone', {id: licensed.id})}}">
+                    Ajouter un numéro de téléphone
                   </a>
                 </button>
               </div>

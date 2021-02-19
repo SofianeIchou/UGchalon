@@ -13,6 +13,8 @@ use App\Entity\User;
 use App\Form\UserType;
 use App\Form\ModifyLicensedType;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use App\Entity\Phone;
+use App\Form\PhoneType;
 
 class MainController extends AbstractController
 {
@@ -149,9 +151,15 @@ class MainController extends AbstractController
 
         $licensedsFound = $licensedRepository->findAll();
 
+        $phoneRepository = $this->getDoctrine()->getRepository(Phone::class);
+
+        $phonesFound = $phoneRepository->findAll();
+
+
 
         return $this->render('main/licensedData.html.twig', [
-            'licenseds' => $licensedsFound
+            'licenseds' => $licensedsFound,
+            'phones' => $phonesFound
         ]) ;
     }
 
@@ -212,11 +220,11 @@ class MainController extends AbstractController
 
             $em->flush();
 
-            $this->addFlash('success', 'Licencié(e) modifié avec succès !');
+            $this->addFlash('success', 'Licencié(e) modifié avec succès.');
 
             if($this->isGranted('ROLE_ADMIN')){
 
-                return $this->redirectToRoute('licensedData');
+                return $this->redirectToRoute('licensed_data');
             } else{
                 return $this->redirectToRoute('licensed');
             }
@@ -235,18 +243,73 @@ class MainController extends AbstractController
      * @Route("/supprimer-licencie/{id}/", name="delete_licensed")
      * @Security("is_granted('ROLE_USER')")
      */
-    public function publicationDelete(Licensed $licensed): Response
+    public function licensedDelete(Licensed $licensed): Response
     {
             $em = $this->getDoctrine()->getManager();
+
+            foreach($licensed->getPhones() as $phone){
+
+                $em->remove($phone);
+
+            }
 
             $em->remove($licensed);
 
             $em->flush();
 
-            $this->addFlash('success', 'Licencié(e) supprimée avec succès');
+            $this->addFlash('success', 'Licencié(e) supprimée avec succès.');
 
         return $this->redirectToRoute('licensed');
 
+    }
+
+    /**
+     * Page d'ajout des numéros de téléphone
+     *
+     * @Route("/ajouter-telephone/{id}/", name="add_phone")
+     * @Security("is_granted('ROLE_USER')")
+     */
+    public function addPhone(Licensed $licensed, Request $request): Response
+    {
+        if($licensed->getUser() != $this->getUser() && !$this->isGranted('ROLE_ADMIN')){
+
+            throw new AccessDeniedHttpException();
+        }
+
+        // Création d'un nouvel objet de la classe Article, vide pour le moment
+        $newPhone = new Phone();
+
+        // Création d'un nouveau formulaire à partir de notre formulaire ArticleType et de notre nouvel article encore vide
+        $form = $this->createForm(PhoneType::class, $newPhone);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+
+            $newPhone
+                ->setLicensed($licensed)
+            ;
+
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($newPhone);
+
+            $em->flush();
+
+            $this->addFlash('success', 'Numéro de téléphone ajouté avec succès.');
+
+            if($this->isGranted('ROLE_ADMIN')){
+
+                return $this->redirectToRoute('licensed_data');
+            } else{
+                return $this->redirectToRoute('licensed');
+            }
+        }
+
+        // Pour que la vue puisse afficher le formulaire, on doit lui envoyer le formulaire généré, avec $form->createView()
+        return $this->render('main/addPhone.html.twig', [
+            'addPhoneForm' => $form->createView()
+        ]);
     }
 
 }

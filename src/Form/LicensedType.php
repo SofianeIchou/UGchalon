@@ -164,7 +164,7 @@ class LicensedType extends AbstractType
                 'label' => 'Ajouter un(e) licencié(e)',
                 'attr' => [
                     'class' => 'btn btn-yellow col-12'
-                ]    // Texte du bouton
+                ]
             ])
         ;
     }
