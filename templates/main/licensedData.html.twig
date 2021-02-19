@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Informations utilisateurs{% endblock %}
+{% block title %}Informations licencié(e)s{% endblock %}
 
 {% block body %}
 
@@ -9,7 +9,8 @@
 <div class="container-fluid">
 
   <div class="row">
-            <h1 class="col-12 text-center my-5 h1-title-page">Informations utilisateurs</h1>
+    <button class="btn btn-yellow col-12 col-md-4 offset-md-4 my-3"><a href="{{ path("add_licensed") }}">Ajouter un(e) nouveau licencié(e)</a></button>
+    <h1 class="col-12 text-center my-5 h1-title-page">Données licencié(es)</h1>
   </div>
 
 {# Infos du compte #}
@@ -17,7 +18,7 @@
 
 
 
-        {% for licensed in app.user.licenseds %}
+        {% for licensed in licenseds %}
 
         <div class="card card-licensed-user col-lg-8 offset-lg-2">
           <div class="card-body">
@@ -26,7 +27,7 @@
             <div class="card-text">
               <ul class="list-group">
                 <li class="list-group-item list-group-item-light col-6 my-2">Genre : <span class="text-info">{{ licensed.gender }}</span></li>
-                <li class="list-group-item list-group-item-light col-6 my-2">Date de naissance : <span class="text-info">{{ licensed.firstname }}</span></li>
+                <li class="list-group-item list-group-item-light col-6 my-2">Date de naissance : <span class="text-info">{{ licensed.birthdate|date('d/m/Y') }}</span></li>
                 <li class="list-group-item list-group-item-light col-6 my-2">Adresse : <span class="text-info">{{ licensed.address }}</span></li>
                 <li class="list-group-item list-group-item-light col-6 my-2">Ville : <span class="text-info">{{ licensed.city }}</span></li>
                 <li class="list-group-item list-group-item-light col-6 my-2">Numéro de sécurité sociale : <span class="text-info">{{ licensed.socialSecurityNumber }}</span></li>
@@ -36,12 +37,12 @@
             </div>
               <div class="d-flex justify-content-between">
                 <button class="btn btn-yellow col-5 ml-4 mt-3">
-                  <a href="#">
+                  <a href="{{path('modify_licensed', {id: licensed.id})}}">
                     Modifier les informations
                   </a>
                 </button>
                 <button class="btn btn-danger col-5 mr-4 mt-3">
-                  <a href="#">
+                  <a href="{{path('delete_licensed', {id: licensed.id})}}">
                     Supprimer ce licencié
                   </a>
                 </button>

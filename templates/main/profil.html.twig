@@ -7,10 +7,10 @@
 
 
 <div class="container-fluid">
-
-  <div class="row">
-            <h1 class="col-12 text-center my-5 h1-title-page">Informations du profil</h1>
-  </div>
+    {% include 'partials/flashes/success.html.twig' %}
+    <div class="row">
+                <h1 class="col-12 text-center my-5 h1-title-page">Informations du profil</h1>
+    </div>
 
 {# Infos du compte #}
   <div class="row">
@@ -40,7 +40,7 @@
   <div class="row">
 
           {# Bouton modifier profil #}
-          <button class="btn btn-yellow col-12 col-md-4 offset-md-4 my-3"><a href="#">Modifier les informations du profil</a></button>
+          <button class="btn btn-yellow col-12 col-md-4 offset-md-4 my-3"><a href="{{ path('modify_profil') }}">Modifier les informations du profil</a></button>
 
           {# Bouton pour ajouter un licencié #}
           <button class="btn btn-yellow col-12 col-md-4 offset-md-4 my-3"><a href="{{ path("add_licensed") }}">Ajouter un(e) nouveau licencié(e)</a></button>

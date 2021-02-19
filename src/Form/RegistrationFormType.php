@@ -55,13 +55,13 @@ class RegistrationFormType extends AbstractType
                 ]
             ])
             ->add('email', EmailType::class, [
-                'label' => 'Adresse Email',
+                'label' => 'Adresse email',
                 'constraints' => [
                     new Email([
-                        'message' => 'L\'adresse email {{ value }} n\'est pas une adresse email valide !'
+                        'message' => 'L\'adresse email {{ value }} n\'est pas une adresse email valide.'
                     ]),
                     new NotBlank([
-                        'message' => 'Merci de renseigner une adresse email'
+                        'message' => 'Merci de renseigner une adresse email.'
                     ]),
                 ]
             ])
@@ -72,7 +72,7 @@ class RegistrationFormType extends AbstractType
                     'label' => 'Mot de passe',
                 ],
                 'second_options' => [
-                    'label' => 'Confirmation du mot de passe',
+                    'label' => 'Confirmation du mot de passe.',
                 ],
                 'mapped' => false,
                 'constraints' => [
@@ -88,7 +88,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                     new Regex([
                         'pattern' => "/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ !\"\#\$%&\'\(\)*+,\-.\/:;<=>?@[\\^\]_`\{|\}~])^.{8,4096}$/",
-                        'message' => 'Le mot de passe doit contenir obligatoirement une minuscule, une majuscule, un chiffre et un caractère spécial',
+                        'message' => 'Le mot de passe doit contenir obligatoirement une minuscule, une majuscule, un chiffre et un caractère spécial.',
                     ])
                 ]
             ])
@@ -115,7 +115,7 @@ class RegistrationFormType extends AbstractType
         $resolver->setDefaults([
             'data_class' => User::class,
             'attr' => [
-                //'novalidate' => 'novalidate'
+                'novalidate' => 'novalidate'
             ]
         ]);
     }

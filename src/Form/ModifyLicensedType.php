@@ -14,7 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 
-class LicensedType extends AbstractType
+class ModifyLicensedType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -161,7 +161,7 @@ class LicensedType extends AbstractType
                 ]
             ])
             ->add('save', SubmitType::class, [ // Ajout d'un champ de type bouton de validation
-                'label' => 'Ajouter un(e) licencié(e)',
+                'label' => 'Sauvegarder les modifications',
                 'attr' => [
                     'class' => 'btn btn-yellow col-12'
                 ]    // Texte du bouton

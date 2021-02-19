@@ -10,8 +10,9 @@ use App\Entity\Licensed;
 use App\Form\LicensedType;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
-
-
+use App\Form\UserType;
+use App\Form\ModifyLicensedType;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class MainController extends AbstractController
 {
@@ -87,7 +88,7 @@ class MainController extends AbstractController
     /**
      * Page d'ajout d'un licencié
      *
-     * @Route("/ajouter-licence/", name="add_licensed")
+     * @Route("/ajouter-licencie/", name="add_licensed")
      * @Security("is_granted('ROLE_USER')")
      */
     public function addLicensed(Request $request): Response
@@ -114,7 +115,7 @@ class MainController extends AbstractController
 
             $em->flush();
 
-            $this->addFlash('success', 'Licencié bien ajouté.');
+            $this->addFlash('success', 'Licencié(e) bien ajouté.');
 
             return $this->redirectToRoute('licensed');
 
@@ -126,9 +127,9 @@ class MainController extends AbstractController
     }
 
     /**
-     * Page d'affichage des infos. du ou des licenciés
+     * Page d'affichage des infos. du ou des licenciés de l'utilisateur
      *
-     * @Route("/licence/", name="licensed")
+     * @Route("/licencie/", name="licensed")
      * @Security("is_granted('ROLE_USER')")
      */
     public function licensed(): Response
@@ -137,21 +138,115 @@ class MainController extends AbstractController
     }
 
     /**
-     * Page d'affichage des données utilisateurs'
+     * Page d'affichage des données de tous les licenciés du site
      *
-     * @Route("/admin/utilisateurs/", name="user_data")
+     * @Route("/admin/licencie/", name="licensed_data")
      */
-    public function userData(): Response
+    public function licensedData(): Response
     {
 
-        $userRepository = $this->getDoctrine()->getRepository(User::class);
+        $licensedRepository = $this->getDoctrine()->getRepository(Licensed::class);
 
-        $usersFound = $userRepository->findAll();
+        $licensedsFound = $licensedRepository->findAll();
 
 
-        return $this->render('main/userData.html.twig', [
-            'users' => $usersFound
+        return $this->render('main/licensedData.html.twig', [
+            'licenseds' => $licensedsFound
         ]) ;
+    }
+
+    /**
+     * Page de modification de profil
+     *
+     * @Route("/modifier-mon-profil/", name="modify_profil")
+     * @Security("is_granted('ROLE_USER')")
+     */
+    public function modifyProfil(Request $request): Response
+    {
+
+        $user = $this->getUser();
+
+        $form = $this->createForm(UserType::class, $user);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+
+            $em = $this->getDoctrine()->getManager();
+
+            $em->flush();
+
+            $this->addFlash('success', 'Profil modifié avec succès !');
+            return $this->redirectToRoute('profil');
+        }
+
+
+        // Pour que la vue puisse afficher le formulaire, on doit lui envoyer le formulaire généré, avec $form->createView()
+        return $this->render('security/modifyProfil.html.twig', [
+            'modifyForm' => $form->createView()
+        ]);
+    }
+
+    /**
+     * Page de modification des licenciés
+     *
+     * @Route("/modifier-licencie/{id}/", name="modify_licensed")
+     * @Security("is_granted('ROLE_USER')")
+     */
+    public function modifyLicensed(Licensed $licensed, Request $request): Response
+    {
+
+        //TODO: Vérifier que le proprio du licencié est le même que la personne connecté
+        if($licensed->getUser() != $this->getUser() && !$this->isGranted('ROLE_ADMIN')){
+
+            throw new AccessDeniedHttpException();
+        }
+
+        $form = $this->createForm(ModifyLicensedType::class, $licensed);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+
+            $em = $this->getDoctrine()->getManager();
+
+            $em->flush();
+
+            $this->addFlash('success', 'Licencié(e) modifié avec succès !');
+
+            if($this->isGranted('ROLE_ADMIN')){
+
+                return $this->redirectToRoute('licensedData');
+            } else{
+                return $this->redirectToRoute('licensed');
+            }
+        }
+
+
+        // Pour que la vue puisse afficher le formulaire, on doit lui envoyer le formulaire généré, avec $form->createView()
+        return $this->render('security/modifyLicensed.html.twig', [
+            'modifyLicensedForm' => $form->createView()
+        ]);
+    }
+
+    /**
+     *  Page servant à supprimer un licencié via son id passé dans l'URL
+     *
+     * @Route("/supprimer-licencie/{id}/", name="delete_licensed")
+     * @Security("is_granted('ROLE_USER')")
+     */
+    public function publicationDelete(Licensed $licensed): Response
+    {
+            $em = $this->getDoctrine()->getManager();
+
+            $em->remove($licensed);
+
+            $em->flush();
+
+            $this->addFlash('success', 'Licencié(e) supprimée avec succès');
+
+        return $this->redirectToRoute('licensed');
+
     }
 
 }
