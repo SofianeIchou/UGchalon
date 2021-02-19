@@ -67,6 +67,27 @@ class MainController extends AbstractController
     }
 
     /**
+     * Page de tout les articles
+     *
+    * @Route("/tous-les-articles/", name="all_articles")
+    */
+    public function all_articles(): Response
+    {
+        return $this->render('main/all_articles.html.twig');
+    }
+
+    /**
+     * Page de l'articles
+     *
+    * @Route("/articles/", name="articles")
+    */
+    public function articles(): Response
+    {
+        return $this->render('main/articles.html.twig');
+    }
+
+
+    /**
      * Page de profil
      *
      * @Route("/mon-profil/", name="profil")
