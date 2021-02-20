@@ -69,6 +69,7 @@ p{
 
 h1{
     color: #E0B43F;
+    font-family: 'Bebas Neue';
 }
 
 h2{
@@ -85,6 +86,10 @@ h2{
     justify-content: center;
 }
 
+.col-lg-2 img{
+    width: 50%;
+}
+
 
 
 /* carroussel */
@@ -95,7 +100,7 @@ h2{
 .carousel-caption{
     border: 1px white solid;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.205);
+    background-color: rgba(255, 255, 255, 0.445);
 }
 
 p.slide-p{
@@ -187,6 +192,15 @@ footer p i{
 
 }
 
+@media screen and (max-width: 1280px){
+
+    .h1-trainer{
+        font-size: 30px;
+    }
+
+}
+
+
 
 .h2-title-licensed{
     padding-top: 1rem;
@@ -209,16 +223,17 @@ a{
     color: rgb(76, 77, 74);
 }
 
-section{
-    display: flex;
-    justify-content: center;
-    align-content: center;
-}
 
 .bloc-section{
-    padding: 20px;
-    margin-bottom: 100px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.bloc-border{
+    width: 80%;
     border:3px solid #e0b53f;
+    margin-bottom: 100px;
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -226,14 +241,29 @@ section{
     -o-border-radius: 5px;
 }
 
+.bloc-border a img{
+    width: 60%;
+    margin: 20px;
+}
+
+.bloc-border a h3{
+    margin: 20px;
+}
+
+.bloc-border a h5{
+    margin: 20px;
+}
+
+
+
+
 .bloc-img-trainer{
-    display: flex;
-    justify-content: center;
+    text-align: center;
     padding: 1rem;
 }
 
 .bloc-img-trainer img{
-    width: 150px;
+    width: 100%;
     padding: 10px;
     border:3px solid #e0b53f;
     border-radius: 50%;
@@ -259,3 +289,4 @@ section{
     -ms-border-radius: 5%;
     -o-border-radius: 5%;
 }
+

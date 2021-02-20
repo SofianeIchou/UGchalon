@@ -9,8 +9,8 @@
 <div class="container-fluid">
 
   <div class="row">
-    <button class="btn btn-yellow col-12 col-md-4 offset-md-4 my-3"><a href="{{ path("add_licensed") }}">Ajouter un(e) nouveau licencié(e)</a></button>
     <h1 class="col-12 text-center my-5 h1-title-page">Données licencié(es)</h1>
+    <button class="btn btn-yellow col-12 col-md-4 offset-md-4 my-3 mb-5"><a href="{{ path("add_licensed") }}">Ajouter un(e) nouveau licencié(e)</a></button>
   </div>
 
 {# Infos du compte #}
@@ -25,24 +25,24 @@
             <h2 class="card-title h2-title-licensed"><span>{{ licensed.firstname }} </span><span>{{ licensed.lastname }}</h2>
             <h5 class="card-subtitle mb-2 text-muted">Informations enregistrées</h5>
             <div class="card-text">
-              <ul class="list-group">
-                <li class="list-group-item list-group-item-light col-6 my-2">Genre : <span class="text-info">{{ licensed.gender }}</span></li>
-                <li class="list-group-item list-group-item-light col-6 my-2">Date de naissance : <span class="text-info">{{ licensed.birthdate|date('d/m/Y') }}</span></li>
-                <li class="list-group-item list-group-item-light col-6 my-2">Adresse : <span class="text-info">{{ licensed.address }}</span></li>
-                <li class="list-group-item list-group-item-light col-6 my-2">Ville : <span class="text-info">{{ licensed.city }}</span></li>
-                <li class="list-group-item list-group-item-light col-6 my-2">Numéro de sécurité sociale : <span class="text-info">{{ licensed.socialSecurityNumber }}</span></li>
-                <li class="list-group-item list-group-item-light col-6 my-2">Discipline : <span class="text-info">{{ licensed.discipline }}</span></li>
-                <li class="list-group-item list-group-item-light col-6 my-2">Remarque(s) médicale : <span class="text-info">{{ licensed.medicalRemark }}</span></li>
+              <ul class="list-group list-unstyled">
+                <li class="col-6 my-2">Genre : <b>{{ licensed.gender }}</b></li>
+                <li class="col-6 my-2">Date de naissance : <b>{{ licensed.birthdate|date('d/m/Y') }}</b></li>
+                <li class="col-6 my-2">Adresse : <b>{{ licensed.address }}</b></li>
+                <li class="col-6 my-2">Ville : <b>{{ licensed.city }}</b></li>
+                <li class="col-6 my-2">Numéro de sécurité sociale : <b>{{ licensed.socialSecurityNumber }}</b></li>
+                <li class="col-6 my-2">Discipline : <b>{{ licensed.discipline }}</b></li>
+                <li class="col-6 my-2">Remarque(s) médicale : <b>{{ licensed.medicalRemark }}</b></li>
               </ul>
             </div>
               <div class="d-flex justify-content-between">
                 <button class="btn btn-yellow col-5 ml-4 mt-3">
-                  <a href="{{path('modify_licensed', {id: licensed.id})}}">
+                  <a class="text-dark" href="{{path('modify_licensed', {id: licensed.id})}}">
                     Modifier les informations
                   </a>
                 </button>
                 <button class="btn btn-danger col-5 mr-4 mt-3">
-                  <a href="{{path('delete_licensed', {id: licensed.id})}}">
+                  <a class="text-white" href="{{path('delete_licensed', {id: licensed.id})}}">
                     Supprimer ce licencié
                   </a>
                 </button>
