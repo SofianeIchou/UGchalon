@@ -10,6 +10,7 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class PhoneType extends AbstractType
 {
@@ -18,17 +19,15 @@ class PhoneType extends AbstractType
         $builder
         ->add('number', TextType::class, [
             'label' => 'Numéro de téléphone',
+            'help' => 'Le numéro de téléphone doit correspondre aux formats suivants : 0612345678, 06 12 34 56 78, 06.12.34.56.78, 06-12-34-56-78',
             'constraints' => [
                 new NotBlank([
                     'message' => 'Veuillez renseigner un numéro de téléphone.',
                 ]),
-                new Length([
-                    'min' => 10,
-                    'minMessage' => 'Le numéro de téléphone doit contenir au moins {{ limit }} caractères.',
-                    // max length allowed by Symfony for security reasons
-                    'max' => 20,
-                    'maxMessage' => 'Le numéro de téléphone doit contenir au maximum {{ limit }} caractères.'
-                ]),
+                new Regex([
+                    'pattern' => '/^(\d{2}[ \-\.\ ]?){4}\d{2}$/',
+                    'message' => 'Le numéro de téléphone doit correspondre aux formats suivants : 0612345678, 06 12 34 56 78, 06.12.34.56.78, 06-12-34-56-78',
+                ])
             ]
 
         ])

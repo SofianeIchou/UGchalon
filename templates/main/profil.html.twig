@@ -27,7 +27,7 @@
               <p><span>Adresse email </span>: <b>{{ app.user.email }}</b></p>
           </div>
           <div>
-              <p><span>Date d'inscription</span>: <b>{{ app.user.registerDate|date('d/m/Y à H\\hi') }}</b></p>
+              <p><span>Date d'inscription </span>: <b>{{ app.user.registerDate|date('d/m/Y à H\\hi') }}</b></p>
           </div>
           <div>
               <p><span>Rôle </span>: <b>{{ is_granted('ROLE_ADMIN') ? 'Administrateur' : 'Utilisateur'}}</b></p>

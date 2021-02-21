@@ -32,12 +32,19 @@
                 <li class="list-group-item list-group-item-light col-6 my-2">Ville : <span class="text-info">{{ licensed.city }}</span></li>
                 <li class="list-group-item list-group-item-light col-6 my-2">Numéro de sécurité sociale : <span class="text-info">{{ licensed.socialSecurityNumber }}</span></li>
                 <li class="list-group-item list-group-item-light col-6 my-2">Discipline : <span class="text-info">{{ licensed.discipline }}</span></li>
-                <li class="list-group-item list-group-item-light col-6 my-2">Remarque(s) médicale : <span class="text-info">{{ licensed.medicalRemark }}</span></li>
+                {% if licensed.medicalRemark is empty %}
+                {% else %}
+                  <li class="list-group-item list-group-item-light col-6 my-2">Remarque(s) médicale : <span class="text-info">{{ licensed.medicalRemark }}</span></li>
+                {% endif %}
+
                 {% set numbers = [] %}
                 {% for phone in licensed.phones %}
                   {% set numbers = numbers|merge([phone.number]) %}
-                  <li class="list-group-item list-group-item-light col-6 my-2">Numéros de téléphone : <span class="text-info">{{ numbers|join(', ') }}</span></li>
                 {% endfor %}
+                {% if numbers is empty %}
+                {% else %}
+                <li class="list-group-item list-group-item-light col-6 my-2">Numéro(s) de téléphone : <span class="text-info">{{ numbers|join(', ') }}</span></li>
+                {% endif %}
               </ul>
             </div>
               <div class="d-flex justify-content-between">

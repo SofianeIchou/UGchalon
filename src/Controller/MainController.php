@@ -15,6 +15,8 @@ use App\Form\ModifyLicensedType;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use App\Entity\Phone;
 use App\Form\PhoneType;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class MainController extends AbstractController
 {
@@ -138,7 +140,7 @@ class MainController extends AbstractController
 
             $em->flush();
 
-            $this->addFlash('success', 'Licencié(e) bien ajouté.');
+            $this->addFlash('success', 'Licencié(e) bien ajouté(e).');
 
             return $this->redirectToRoute('licensed');
 
@@ -164,6 +166,7 @@ class MainController extends AbstractController
      * Page d'affichage des données de tous les licenciés du site
      *
      * @Route("/admin/licencie/", name="licensed_data")
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function licensedData(): Response
     {
@@ -205,7 +208,7 @@ class MainController extends AbstractController
 
             $em->flush();
 
-            $this->addFlash('success', 'Profil modifié avec succès !');
+            $this->addFlash('success', 'Profil modifié avec succès.');
             return $this->redirectToRoute('profil');
         }
 
@@ -241,7 +244,7 @@ class MainController extends AbstractController
 
             $em->flush();
 
-            $this->addFlash('success', 'Licencié(e) modifié avec succès.');
+            $this->addFlash('success', 'Licencié(e) modifié(e) avec succès.');
 
             if($this->isGranted('ROLE_ADMIN')){
 
@@ -278,9 +281,14 @@ class MainController extends AbstractController
 
             $em->flush();
 
-            $this->addFlash('success', 'Licencié(e) supprimée avec succès.');
+            $this->addFlash('success', 'Licencié(e) supprimé(e) avec succès.');
 
-        return $this->redirectToRoute('licensed');
+            if($this->isGranted('ROLE_ADMIN')){
+
+                return $this->redirectToRoute('licensed_data');
+            } else{
+                return $this->redirectToRoute('licensed');
+            }
 
     }
 
@@ -297,10 +305,10 @@ class MainController extends AbstractController
             throw new AccessDeniedHttpException();
         }
 
-        // Création d'un nouvel objet de la classe Article, vide pour le moment
+        // Création d'un nouvel objet de la classe Phone, vide pour le moment
         $newPhone = new Phone();
 
-        // Création d'un nouveau formulaire à partir de notre formulaire ArticleType et de notre nouvel article encore vide
+        // Création d'un nouveau formulaire à partir de notre formulaire PhoneType et de notre nouvel phone encore vide
         $form = $this->createForm(PhoneType::class, $newPhone);
 
         $form->handleRequest($request);

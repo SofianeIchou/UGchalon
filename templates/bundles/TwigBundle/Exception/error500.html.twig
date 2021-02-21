@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur 500{% endblock %}
+
+{% block body %}
+    {# Bloc supérieur histoire/img/dernier article #}
+<div class="container-fluid">
+
+  <h1 class="h1-title-page">Erreur 500 : Erreur serveur</h1>
+
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3 text-center my-3 mb-5">
+          <img src="{{ asset('src/error500.png') }}" alt="erreur 500">
+        </div>
+    </div>
+</div>
+
+{% endblock %}
