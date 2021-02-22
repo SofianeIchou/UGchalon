@@ -44,9 +44,9 @@ class PhoneType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Phone::class,
-            'attr' => [
-                'novalidate' => 'novalidate'
-            ]
+            //'attr' => [
+                //'novalidate' => 'novalidate'
+            //]
         ]);
     }
 }

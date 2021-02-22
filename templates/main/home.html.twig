@@ -3,7 +3,8 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    {# Bloc supérieur histoire/img/dernier article #}
+
+{# Bloc supérieur histoire/img/dernier article #}
 <div class="container-fluid">
 
   {% include 'partials/flashes/error.html.twig' %}
@@ -12,37 +13,49 @@
 
   <h1 class="h1-title-page">Accueil</h1>
 
+    {# Paragraphe histoire #}
     <div class="row">
-          <div class="col-lg-5">
-              <h2>Histoire</h2>
-              <p>En 1937, juste avant la guerre, c’est le Front Populaire, la France est en pleine mutation sociale mais la gymnastique reste sur sa lancée. Elle se pratique principalement en plein air sur les stades. Les gymnastes évoluent en groupes et proposent des chorégraphies sous forme de préliminaires et mouvements d’ensembles. Les épreuves individuelles existent et elles sont souvent associées à des épreuves d’athlétisme : saut en hauteur, lancer de poids, sprint et montées de cordes lisses ou à nœuds. Les salles de gymnastique sont souvent inadaptées, poussiéreuses et désuètes, le matériel rudimentaire et inconfortable. Les agrès sont quelquefois de fabrication artisanale et ne répondent pas aux normes exigeantes d’aujourd’hui</p>
-          </div>
-          <div class="col-lg-2">
-              <img src="{{ asset('src/carré.png') }}" alt="carré">
-          </div>
-          <div class="col-lg-5">
-            <h2>Dernier article</h2>
-              <div class="card h-100">
-                <h1 class="card-title text-center my-3">{{ article.title }}</h1>
-                <div class="card-body">
-                  <p class="card-text">{{ article.content|purify|striptags|slice(0,150) }}...</p>
-                </div>
-                <div class="card-footer">
-                  <a href="{{ path('articles', { slug: article.slug }) }}" class="btn btn-yellow">Lire la suite</a>
-                </div>
+      <div class="col-lg-5">
+        <h1>Histoire</h1>
+        <p>En 1937, juste avant la guerre, c’est le Front Populaire, la France est en pleine mutation sociale mais la gymnastique reste sur sa lancée. Elle se pratique principalement en plein air sur les stades. Les gymnastes évoluent en groupes et proposent des chorégraphies sous forme de préliminaires et mouvements d’ensembles. Les épreuves individuelles existent et elles sont souvent associées à des épreuves d’athlétisme : saut en hauteur, lancer de poids, sprint et montées de cordes lisses ou à nœuds. Les salles de gymnastique sont souvent inadaptées, poussiéreuses et désuètes, le matériel rudimentaire et inconfortable. Les agrès sont quelquefois de fabrication artisanale et ne répondent pas aux normes exigeantes d’aujourd’hui</p>
+      </div>
+      <div class="col-lg-2">
+        <img src="{{ asset('src/carré.png') }}" alt="carré">
+      </div>
+
+      {# Si aucun article #}
+      {% if article is empty%}
+        <div class="col-lg-5 text-right">
+          <h1>Dernier article</h1>
+          <p>Aucun article à afficher</p>
+        </div>
+
+        {# Sinon, si il y a au moins un article, on affiche le dernier #}
+      {% else %}
+        <div class="col-lg-5 text-right">
+          <h1>Dernier article</h1>
+            <div class="card h-100">
+              <h1 class="card-title text-center my-3">{{ article.title }}</h1>
+              <div class="card-body">
+                <p class="card-text">{{ article.content|purify|striptags|slice(0,150) }}...</p>
               </div>
-          </div>
+              <div class="card-footer">
+                <a href="{{ path('article', { slug: article.slug }) }}" class="btn btn-yellow">Lire la suite</a>
+              </div>
+            </div>
+        </div>
+      {% endif %}
     </div>
 
+    {# Carrousel #}
     <div class="row">
       <div class="col-12 p-0">
-        {# Carrousel #}
-          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
 
             <div class="carousel-inner">
 

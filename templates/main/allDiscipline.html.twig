@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Disciplines{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+
+    <div class="row">
+        <h1 class="col-12 text-center my-5 h1-title-page">Disciplines</h1>
+    </div>
+
+
+    {# Titre et descriptif #}
+    <div class="row">
+        <div class="test col-lg-5">
+            <h2>3 disciplines, pour toutes vos envies !</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis laborum aliquid dicta itaque. Error blanditiis fuga nihil? Numquam eius mollitia, doloremque cupiditate error enim! Doloribus cupiditate distinctio voluptatem veritatis id.</p>
+        </div>
+
+        <div class="col-lg-2">
+            <img src="{{ asset('src/carré.png') }}" alt="carré">
+        </div>
+
+        <div class="col-lg-5">
+            <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc, fiant sollemnes in futurum.</p>
+            <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consueum formas humanitatis per seacula quarta deciEodem modo tythepi, qui nunc, fiant sollemnes in futurum.</p>
+        </div>
+    </div>
+
+        {# div englobant les 3 disciplines #}
+    <div class="row">
+        <div class="bloc-section col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 p-2">
+            <div class="bloc-border">
+                <div class="bloc-content-discipline">
+                    <a href="{{ path('discipline_gam') }}">
+                        <img src="{{ asset('src/carregam.jpg') }}" alt="GAM"/>
+                        <h3>Gymnastique Artistique <br>Masculine</h3>
+                        <h5>Voir plus</h5>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="bloc-section col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 p-2">
+            <div class="bloc-border">
+                <div class="bloc-content-discipline">
+                    <a href="{{ path('discipline_baby_gym') }}">
+                        <img src="{{ asset('src/carrebaby.jpg') }}" alt="Baby_gym"/>
+                        <h3>Baby Gym</h3>
+                        <h5>Voir plus</h5>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="bloc-section col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 p-2">
+            <div class="bloc-border">
+                <div class="bloc-content-discipline">
+                    <a href="{{ path('discipline_hobbies') }}">
+                        <img src="{{ asset('src/carréloisir.jpg') }}" alt="loisir"/>
+                        <h3>Gym loisir</h3>
+                        <h5>Voir plus</h5>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
