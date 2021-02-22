@@ -12,15 +12,15 @@
               <div class="col-12">
 
 
-                  <button class="btn btn-yellow my-5"><a href="{{ path('all_articles') }}">Retour a la liste des articles</a></button>
+                  <a class="btn btn-yellow my-5" href="{{ path('all_articles') }}">Retour à la liste des articles</a>
 
                   <!-- Title -->
                   <h1 class="mt-4">{{ article.title }}</h1>
 
                   <!-- Author -->
                   <p>
-                    by
-                    <a href="#">{{ article.author.firstname }} {{ article.author.lastname }}</a>
+                    par
+                    <b>{{ article.author.firstname }} {{ article.author.lastname }}</b>
                   </p>
 
                   <hr>

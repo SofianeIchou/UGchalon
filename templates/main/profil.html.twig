@@ -12,7 +12,7 @@
                 <h1 class="col-12 text-center my-5 h1-title-page">Informations du profil</h1>
     </div>
 
-{# Infos du compte #}
+    {# Infos du compte #}
   <div class="row">
 
       <div class="bloc-infos col-12 col-md-8 offset-md-2 col-sm-8 offset-sm-2 my-3">
@@ -38,17 +38,17 @@
   </div>
 
   <div class="row">
-        <div class="col-md-8 offset-md-2 col-sm-8 offset-sm-2">
-          {# Bouton modifier profil #}
-          <button class="btn btn-yellow col-12 my-3"><a href="{{ path('modify_profil') }}">Modifier les informations du profil</a></button>
+    <div class="col-md-8 offset-md-2 col-sm-8 offset-sm-2">
+        {# Bouton modifier profil #}
+        <a class="btn btn-yellow col-12 my-3" href="{{ path('modify_profil') }}">Modifier les informations du profil</a>
 
-          {# Bouton pour ajouter un licencié #}
-          <button class="btn btn-yellow col-12 my-3"><a href="{{ path("add_licensed") }}">Ajouter un(e) nouveau licencié(e)</a></button>
-        </div>
+        {# Bouton pour ajouter un licencié #}
+        <a class="btn btn-yellow col-12 my-3" href="{{ path("add_licensed") }}">Ajouter un(e) nouveau licencié(e)</a>
+    </div>
   </div>
 
 
-    </div>
+
 </div>
 
 

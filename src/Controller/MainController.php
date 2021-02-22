@@ -18,9 +18,6 @@ use App\Form\PhoneType;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use DateTime;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\HttpKernel\Exception\HttpException;
-
 class MainController extends AbstractController
 {
 
@@ -39,43 +36,43 @@ class MainController extends AbstractController
     }
 
     /**
-     * Page des discipline
+     * Page des disciplines
      *
-    * @Route("/disciplines/", name="all_disciplines")
+    * @Route("/disciplines/", name="all_discipline")
     */
     public function disciplines(): Response
     {
-        return $this->render('main/all_disciplines.html.twig');
+        return $this->render('main/allDiscipline.html.twig');
     }
 
     /**
      * Page de gymnastique artistique masculine
      *
-    * @Route("/disciplines/gam", name="disciplines_gam")
+    * @Route("/disciplines/gam", name="discipline_gam")
     */
-    public function disciplines_gam(): Response
+    public function disciplineGam(): Response
     {
-        return $this->render('main/disciplines_gam.html.twig');
+        return $this->render('main/disciplineGam.html.twig');
     }
 
     /**
-     * Page de babygym
+     * Page de baby gym
      *
-    * @Route("/disciplines/babygym", name="disciplines_babygym")
+    * @Route("/disciplines/babygym", name="discipline_baby_gym")
     */
-    public function disciplines_babygym(): Response
+    public function disciplineBabyGym(): Response
     {
-        return $this->render('main/disciplines_babygym.html.twig');
+        return $this->render('main/disciplineBabyGym.html.twig');
     }
 
     /**
      * Page de loisir
      *
-    * @Route("/disciplines/loisirs", name="disciplines_loisirs")
+    * @Route("/disciplines/loisir", name="discipline_hobbies")
     */
-    public function disciplines_loisirs(): Response
+    public function disciplineHobbies(): Response
     {
-        return $this->render('main/disciplines_loisirs.html.twig');
+        return $this->render('main/disciplineHobbies.html.twig');
     }
 
     /**
@@ -83,15 +80,14 @@ class MainController extends AbstractController
      *
     * @Route("/tous-les-articles/", name="all_articles")
     */
-    public function all_articles(): Response
+    public function allArticles(): Response
     {
 
-
         $articleRepository = $this->getDoctrine()->getRepository(Article::class);
-        $articlesFound = $articleRepository->findAll();
+        $articlesFound = $articleRepository->findBy([], ['publicationDate' => 'DESC']);
 
 
-        return $this->render('main/all_articles.html.twig', [
+        return $this->render('main/allArticles.html.twig', [
             'articles' => $articlesFound
         ]) ;
     }
@@ -99,12 +95,12 @@ class MainController extends AbstractController
     /**
      * Page de l'article
      *
-    * @Route("/articles/{slug}", name="articles")
+    * @Route("/article/{slug}", name="article")
     */
-    public function articles(Article $article, Request $request): Response
+    public function article(Article $article, Request $request): Response
     {
 
-        return $this->render('main/articles.html.twig', [
+        return $this->render('main/article.html.twig', [
             'article' => $article
         ]) ;
     }
@@ -114,7 +110,7 @@ class MainController extends AbstractController
      *
     * @Route("/ajouter-un-article/", name="add_article")
     */
-    public function add_article(Request $request): Response
+    public function addArticle(Request $request): Response
     {
         // Création d'un nouvel objet de la classe Article, vide pour le moment
         $newArticle = new Article();
@@ -143,7 +139,7 @@ class MainController extends AbstractController
         }
 
         // Pour que la vue puisse afficher le formulaire, on doit lui envoyer le formulaire généré, avec $form->createView()
-        return $this->render('main/add_article.html.twig', [
+        return $this->render('main/addArticle.html.twig', [
             'articleform' => $form->createView()
         ]);
     }

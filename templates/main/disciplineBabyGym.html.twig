@@ -5,6 +5,7 @@
 {% block body %}
 <div class="container-fluid">
 
+    {# Titre #}
     <div class="row">
         <h1 class="col-12 text-center my-5 h1-title-page">Baby Gym</h1>
     </div>
@@ -28,20 +29,17 @@
             </div>
         </div>
         <div class="bloc-jumbo-2 col-lg-2 offset-lg-1 col-md-4 offset-md-4 col-sm-4 offset-sm-4">
-        <div class="jumbotron">
-            <h1 class="h1-trainer text-center my-3">Entraîneur</h1>
-            <div class="bloc-img-trainer">
-                <img class="bloc-img-trainer" src="{{ asset('src/personal-trainer.png') }}" alt="entraineur">
+            <div class="jumbotron">
+                <h1 class="h1-trainer text-center my-3">Entraîneur</h1>
+                <div class="bloc-img-trainer">
+                    <img class="bloc-img-trainer" src="{{ asset('src/personal-trainer.png') }}" alt="entraineur">
+                </div>
+                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita magnam quis esse vero quasi minus cupiditate iusto commodi earum neque.</p>
+                <hr class="my-4">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, sunt.</p>
             </div>
-
-            <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita magnam quis esse vero quasi minus cupiditate iusto commodi earum neque.</p>
-            <hr class="my-4">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, sunt.</p>
-
-        </div>
         </div>
     </div>
-
 </div>
 {% endblock %}
 

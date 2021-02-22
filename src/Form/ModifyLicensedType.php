@@ -173,9 +173,9 @@ class ModifyLicensedType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Licensed::class,
-            'attr' => [
-                'novalidate' => 'novalidate'
-            ]
+            //'attr' => [
+                //'novalidate' => 'novalidate'
+            //]
         ]);
     }
 }
