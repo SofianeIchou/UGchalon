@@ -117,7 +117,6 @@ class LicensedType extends AbstractType
                     new Length([
                         'min' => 1,
                         'minMessage' => 'La ville doit contenir au moins {{ limit }} caractères.',
-                        // max length allowed by Symfony for security reasons
                         'max' => 60,
                         'maxMessage' => 'La ville doit contenir au maximum {{ limit }} caractères.'
                     ]),
@@ -132,7 +131,6 @@ class LicensedType extends AbstractType
                     new Length([
                         'min' => 15,
                         'minMessage' => 'La numéro de sécurité doit contenir {{ limit }} caractères. (clé comprise)',
-                        // max length allowed by Symfony for security reasons
                         'max' => 15,
                         'maxMessage' => 'Le numéro de sécurité sociale doit contenir {{ limit }} caractères. (clé comprise)'
                     ]),
@@ -154,7 +152,6 @@ class LicensedType extends AbstractType
                     new Length([
                         'min' => 10,
                         'minMessage' => 'Le message doit contenir au moins {{ limit }} caractères.',
-                        // max length allowed by Symfony for security reasons
                         'max' => 1000,
                         'maxMessage' => 'Le message doit contenir au maximum {{ limit }} caractères.'
                     ]),

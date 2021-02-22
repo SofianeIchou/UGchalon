@@ -61,18 +61,19 @@ class RegistrationFormType extends AbstractType
                         'message' => 'L\'adresse email {{ value }} n\'est pas une adresse email valide.'
                     ]),
                     new NotBlank([
-                        'message' => 'Merci de renseigner une adresse email.'
+                        'message' => 'Veuillez renseigner une adresse email.'
                     ]),
                 ]
             ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'invalid_message' => 'Le mot de passe ne correspond pas à sa confirmation',
+                'invalid_message' => 'Le mot de passe ne correspond pas à sa confirmation.',
                 'first_options' => [
                     'label' => 'Mot de passe',
+                    'help' => 'Le mot de passe doit contenir au minimum 8 caractères dont une minuscule, une majuscule, un chiffre et un caractère spécial.',
                 ],
                 'second_options' => [
-                    'label' => 'Confirmation du mot de passe.',
+                    'label' => 'Confirmation du mot de passe',
                 ],
                 'mapped' => false,
                 'constraints' => [
@@ -93,11 +94,12 @@ class RegistrationFormType extends AbstractType
                 ]
             ])
             ->add('agreeTerms', CheckboxType::class, [
-                'label' => 'Accepter les termes et conditions.',
+                'label' => 'Accepter les #terms_of_use_link#.',
+                //'label_html' => true,
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'Vous devez accepter les termes et conditions.',
+                        'message' => 'Vous devez accepter les termes et conditions générales d\'utilisation.',
                     ]),
                 ]
             ])

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur 403{% endblock %}
+
+{% block body %}
+    {# Bloc supérieur histoire/img/dernier article #}
+<div class="container-fluid">
+
+  <h1 class="h1-title-page">Erreur 403 : Accès interdit</h1>
+
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3 text-center my-3 mb-5">
+          <img src="{{ asset('src/error403.png') }}" alt="erreur 403">
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
