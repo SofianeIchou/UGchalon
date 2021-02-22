@@ -83,11 +83,6 @@ class MainController extends AbstractController
     public function allArticles(): Response
     {
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 5a9bdde0e35327e218119fa2bb45e3644ee6dfd5
         $articleRepository = $this->getDoctrine()->getRepository(Article::class);
         $articlesFound = $articleRepository->findBy([], ['publicationDate' => 'DESC']);
 
