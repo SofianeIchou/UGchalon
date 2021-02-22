@@ -35,7 +35,7 @@
                     <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-running mr-1"></i> Disciplines </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ path('disciplines') }}">Toutes les disciplines</a>
+                            <a class="dropdown-item" href="{{ path('all_disciplines') }}">Toutes les disciplines</a>
                         <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ path('disciplines_gam') }}">Gymnastique masculine</a>
                             <a class="dropdown-item" href="{{ path('disciplines_babygym') }}">Baby Gym</a>
@@ -53,15 +53,15 @@
                 <ul class="navbar-nav">
                     {% if is_granted("ROLE_ADMIN") %}
                     <li class="nav-item">
-                        <a href="{{ path('licensed_data') }}" class="nav-link"><i class="fas fa-database mr-1"></i>Données Licencié(e)s</a>
+                        <a href="{{ path('licensed_data') }}" class="nav-link"><i class="fas fa-database mr-1"></i>Données Licencié(es)</a>
                     </li>
                     {% endif %}
                     {% if app.user %}
                         <li class="nav-item">
-                            <a href="{{ path('profil') }}" class="nav-link"><i class="fas fa-user-alt mr-1"></i>Profil</a>
+                            <a href="{{ path('licensed') }}" class="nav-link"><i class="fas fa-id-badge mr-1"></i></i>Licencié(es)</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ path('licensed') }}" class="nav-link"><i class="fas fa-id-badge mr-1"></i></i>Licencié(es)</a>
+                            <a href="{{ path('profil') }}" class="nav-link"><i class="fas fa-user-alt mr-1"></i>Profil</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ path('app_logout') }}" class="nav-link"><i class="fas fa-sign-out-alt mr-1"></i>Déconnexion</a>

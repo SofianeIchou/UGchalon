@@ -31,11 +31,11 @@ class MainController extends AbstractController
     /**
      * Page des discipline
      *
-    * @Route("/disciplines/", name="disciplines")
+    * @Route("/disciplines/", name="all_disciplines")
     */
     public function disciplines(): Response
     {
-        return $this->render('main/disciplines.html.twig');
+        return $this->render('main/all_disciplines.html.twig');
     }
 
     /**
@@ -79,7 +79,7 @@ class MainController extends AbstractController
     }
 
     /**
-     * Page de l'articles
+     * Page de l'article
      *
     * @Route("/articles/", name="articles")
     */
