@@ -290,3 +290,13 @@ a{
     -o-border-radius: 5%;
 }
 
+.page-all-article .row div div .card-body p{
+    text-align: left;
+}
+
+.article-p .row p{
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+}

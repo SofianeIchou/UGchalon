@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un article{% endblock %}
+
+{% block body %}
+
+
+
+<div class="container-fluid">
+
+    <div class="row">
+      <h1 class="col-12 text-center my-5 h1-title-page">Ajouter un article</h1>
+    </div>
+
+  {# Infos du compte #}
+    <div class="row">
+      <div class="col-md-8 offset-md-2 col-md-9 offset-md-1 col-sm-9 offset-sm-1">
+        {{ form(articleform) }}
+      </div>
+
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}
+

@@ -56,6 +56,9 @@
                     <li class="nav-item">
                         <a href="{{ path('licensed_data') }}" class="nav-link"><i class="fas fa-database mr-1"></i>Données Licencié(e)s</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ path('add_article') }}" class="nav-link"><i class="fas fa-database mr-1"></i>Créer un article</a>
+                    </li>
                     {% endif %}
                     {% if app.user %}
                         <li class="nav-item">
@@ -88,7 +91,7 @@
        <!-- Footer -->
     <footer class="bg-default text-center text-lg-start mt-auto">
         <!-- Grid container -->
-        <div class="container col-lg-12 col-md-12 col-sm-12 p-4">
+        <div class="container col-lg-12 col-md-12 col-sm-12 p-0">
         <!--Grid row-->
             <div class="row">
             <!--Grid column-->

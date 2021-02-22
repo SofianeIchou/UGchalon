@@ -15,15 +15,25 @@ use App\Form\ModifyLicensedType;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use App\Entity\Phone;
 use App\Form\PhoneType;
+use App\Entity\Article;
+use App\Form\ArticleType;
+use DateTime;
 
 class MainController extends AbstractController
 {
+
     /**
      * @Route("/", name="home")
      */
     public function home(): Response
     {
-        return $this->render('main/home.html.twig');
+        $articleRepository = $this->getDoctrine()->getRepository(Article::class);
+        $articleFound = $articleRepository->findOneBy([], ['publicationDate' => 'DESC'], 1);
+
+
+        return $this->render('main/home.html.twig',[
+            'article' => $articleFound
+        ]);
     }
 
     /**
@@ -73,19 +83,68 @@ class MainController extends AbstractController
     */
     public function all_articles(): Response
     {
-        return $this->render('main/all_articles.html.twig');
+
+
+        $articleRepository = $this->getDoctrine()->getRepository(Article::class);
+        $articlesFound = $articleRepository->findAll();
+
+
+        return $this->render('main/all_articles.html.twig', [
+            'articles' => $articlesFound
+        ]) ;
     }
 
     /**
      * Page de l'articles
      *
-    * @Route("/articles/", name="articles")
+    * @Route("/articles/{slug}", name="articles")
     */
-    public function articles(): Response
+    public function articles(Article $article, Request $request): Response
     {
-        return $this->render('main/articles.html.twig');
+
+        return $this->render('main/articles.html.twig', [
+            'article' => $article
+        ]) ;
     }
 
+    /**
+     * Page d'ajout d'article
+     *
+    * @Route("/ajouter-un-article/", name="add_article")
+    */
+    public function add_article(Request $request): Response
+    {
+        // Création d'un nouvel objet de la classe Article, vide pour le moment
+        $newArticle = new Article();
+
+        // Création d'un nouveau formulaire à partir de notre formulaire ArticleType et de notre nouvel article encore vide
+        $form = $this->createForm(ArticleType::class, $newArticle);
+
+        $form->handleRequest($request);
+
+
+        // Pour savoir si le formulaire a été envoyé, on a accès à cette condition :
+        if($form->isSubmitted() && $form->isValid()){
+
+            $newArticle->setPublicationDate( new DateTime() );
+            $newArticle->setAuthor( $this->getUser() );
+
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($newArticle);
+
+            $em->flush();
+
+            $this->addFlash('success', 'L\'article a bien été créé');
+
+            return $this->redirectToRoute('all_articles');
+        }
+
+        // Pour que la vue puisse afficher le formulaire, on doit lui envoyer le formulaire généré, avec $form->createView()
+        return $this->render('main/add_article.html.twig', [
+            'articleform' => $form->createView()
+        ]);
+    }
 
     /**
      * Page de profil
@@ -297,10 +356,9 @@ class MainController extends AbstractController
             throw new AccessDeniedHttpException();
         }
 
-        // Création d'un nouvel objet de la classe Article, vide pour le moment
         $newPhone = new Phone();
 
-        // Création d'un nouveau formulaire à partir de notre formulaire ArticleType et de notre nouvel article encore vide
+
         $form = $this->createForm(PhoneType::class, $newPhone);
 
         $form->handleRequest($request);
