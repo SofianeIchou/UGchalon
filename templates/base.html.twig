@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- TODO: Paramétriser le nom -->
-    <title>{% block title %}Nouvelle page{% endblock %} - XXXXX</title>
+    <title>{% block title %}Nouvelle page{% endblock %} - UG Chalon</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
@@ -107,13 +106,13 @@
 
                     <ul class="list-unstyled mb-0">
                         <li>
-                            <p><a href="tel:0385436474"><i class="fas fa-phone-alt fa-2x"></i><u>Tél. 03 85 43 64 74</u></a></p>
+                            <p><a href="tel:0385436474" target="_blank"><i class="fas fa-phone-alt fa-2x"></i><u>Tél. 03 85 43 64 74</u></a></p>
                         </li>
                         <li>
-                            <p><a href="mailto:ugchalon@gmail.com"><i class="far fa-envelope fa-2x"></i><u>Envoyez nous un mail !</u></a></p>
+                            <p><a href="mailto:ugchalon@gmail.com" target="_blank"><i class="far fa-envelope fa-2x"></i><u>Envoyez nous un mail !</u></a></p>
                         </li>
                         <li>
-                            <p class="fb-p"><a href="#"><i class="fab fa-facebook fa-2x"></i><u>Rejoignez-nous !</u></a></p>
+                            <p class="fb-p"><a href="https://www.facebook.com/ug.chalon" target="_blank"><i class="fab fa-facebook fa-2x"></i><u>Rejoignez-nous !</u></a></p>
                         </li>
                     </ul>
                 </div>
@@ -123,7 +122,7 @@
                 <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 align-item-center">
                     <h5 class="text-uppercase my-3">C.G.U.</h5>
 
-                    <p class="mt-4 text-center"><a href="#" class="text-dark"><u>Lorem ipsum dolor sit amet consectetur.</u></a></p>
+                    <p class="mt-4 text-center"><a href="{{ path('cgu') }}" class="text-dark"><u>Conditions générales d'utilisation.</u></a></p>
 
                 </div>
             </div>

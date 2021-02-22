@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon profil{% endblock %}
+
+{% block body %}
+
+
+
+<div class="container-fluid">
+    {% include 'partials/flashes/success.html.twig' %}
+    <div class="row">
+        <h1 class="col-12 text-center my-5 h1-title-page">Conditions générales d'utilisation</h1>
+    </div>
+
+{# Infos du compte #}
+<div class="row">
+    <div class="col-lg-6 offset-3 text-center">
+        <h2>Définition des Conditions Générales d’Utilisation</h2>
+        <p>Les Conditions Générales d’Utilisation (CGU) constituent une sorte de contrat qui lie l’Editeur d’un site web et les utilisateurs de ce même site. Elles ont pour objet de définir les modalités d’utilisation d’un site internet, de fixer les responsabilités de chacune des parties et de déterminer les règles de résolution des contentieux qui peuvent naître du fait de l’utilisation du site internet concerné</p>
+        <h2>Un site internet doit-il posséder des CGU ?</h2>
+        <p>Les Conditions Générales d’Utilisation ne sont pas obligatoires. Néanmoins, elles peuvent être utiles et même nécessaires pour certains sites internet alors qu’elles ne présenteraient aucune utilité pour d’autres. C’est le cas, pas exemple, d’un simple site vitrine dont l’objectif est, uniquement, de présenter une entreprise et sur lequel aucun espace personnel n’est présent. Pour ce type de site internet, la présence de CGU ne présente pas vraiment d’utilité.
+            A l’inverse, un site internet proposant aux internautes de créer un espace personnel, procède alors à une collecte de données personnelles qui implique de posséder des CGU.
+            Contrairement aux Conditions Générales de Vente et aux Mentions légales qui sont obligatoires sur les boutiques en ligne, la rédaction de Condition Générale d’Utilisation relève d’une simple décision de l’Editeur du site.</p>
+        <h2>Comment bien rédiger des CGU ?</h2>
+        <p>Si vous décidez de rédiger des Conditions Générales d’Utilisation pour votre site internet dans le but de vous protéger juridiquement, vous devez prendre en compte divers éléments. Pour que vos CGU produisent leur effet juridique, il est impératif de les faire accepter par les utilisateurs et visiteurs de votre site internet.</p>
+    </div>
+</div>
+
+
+
+
+{% endblock %}
+

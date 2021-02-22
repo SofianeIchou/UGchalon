@@ -30,8 +30,11 @@
 
                 {{ form_row(registrationForm.plainPassword) }}
 
-                {{ form_row(registrationForm.agreeTerms) }}
+                {% set termsOfUseFormGroup %}
+                    {{ form_row(registrationForm.agreeTerms) }}
+                {% endset %}
 
+                {{ termsOfUseFormGroup|replace({'#terms_of_use_link#' : '<a href="'~ path('cgu') ~'">termes et conditions</a>'})|raw }}
                 {# Affichage du captcha avec la clé publique #}
                 <div class="form-group">
                     <p class="mb-2">Captcha de sécurité</p>
