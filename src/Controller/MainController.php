@@ -87,6 +87,7 @@ class MainController extends AbstractController
     {
 
 
+
         $articleRepository = $this->getDoctrine()->getRepository(Article::class);
         $articlesFound = $articleRepository->findAll();
 
